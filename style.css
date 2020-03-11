@@ -25,13 +25,15 @@ input[type="submit"] {
   border-radius: 25px;
 }
 
-footer {
-  background-color: #141335;
-  color: #fff;
+main {
+  background-color: #ebebf8;
 }
 
-footer a,
-footer a:hover,
-footer a:visited {
-  color: #fff;
+.slide__img img {
+  object-fit: cover;
+}
+
+.ability__ico {
+  background: url("./assets/images/ability.svg") no-repeat;
+  height: 24px;
 }

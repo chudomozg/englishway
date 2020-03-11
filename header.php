@@ -9,6 +9,7 @@
  </head>
  <body <?php body_class(); ?>>
     <header>
+        
         <div class="header_wrapper">
             <div class="header_wrapper__header header">
                 <div class="header__mobile_burger">
@@ -51,8 +52,6 @@
                 </div>
             </div>
             <?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>    
-        </div>
             
-
-          
+        </div>          
     </header>

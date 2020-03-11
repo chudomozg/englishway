@@ -1,3 +1,14 @@
+footer {
+  background-color: #141335;
+  color: #fff;
+}
+
+footer a,
+footer a:hover,
+footer a:visited {
+  color: #fff;
+}
+
 .copyright {
   color: #b3b3b3;
   font-size: 12px;
