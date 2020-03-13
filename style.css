@@ -21,8 +21,26 @@ a:hover {
 }
 
 button,
+.button,
 input[type="submit"] {
   border-radius: 25px;
+  text-transform: uppercase;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-shadow: 8px 8px 8px 0px rgba(227, 11, 19, 0.25);
+  -moz-box-shadow: 8px 8px 8px 0px rgba(227, 11, 19, 0.25);
+  box-shadow: 8px 8px 8px 0px rgba(227, 11, 19, 0.25);
+}
+
+.button a,
+.button a:hover,
+.button a:visited {
+  text-decoration: none !important;
+  color: white;
 }
 
 main {
@@ -33,7 +51,66 @@ main {
   object-fit: cover;
 }
 
+.review__img img {
+  object-fit: cover;
+  height: 120px;
+}
+
 .ability__ico {
   background: url("./assets/images/ability.svg") no-repeat;
   height: 24px;
+}
+
+.test-widget {
+  background: url("./assets/images/test_widget_bg.png") no-repeat;
+  background-size: cover;
+}
+
+.test-widget__wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0 0 24px 0;
+}
+
+.test-widget__message {
+  color: #fff;
+}
+
+.primary-deep {
+  background-color: #e30b13;
+  color: #fff;
+}
+
+.widget {
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.test-widget__wrapper {
+  border-radius: 4px;
+}
+
+/* /* Экстрамалые девайсы («портретные телефоны», < 576px)* */
+@media (max-width: 575.98px) {
+  .test-widget {
+    height: 210px;
+  }
+}
+
+/* // Малые девайсы («ландшафтные», >= 575px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+}
+
+/* // Средние девайсы («таблетки», >= 768px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+}
+
+/* // Большие девайсы (большие десктопы, >= 992px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+}
+
+/* // Большие девайсы (большие десктопы, >= 1200px) */
+@media (min-width: 1200px) {
+  .test-widget {
+    height: 184px;
+  }
 }

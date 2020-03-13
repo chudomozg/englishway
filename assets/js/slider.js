@@ -1,5 +1,16 @@
 (function ($) {
   $(document).ready(function () {
-    $(".owl-carousel").owlCarousel({loop: true, items: 1});
+    $(".banner").owlCarousel({loop: true, items: 1});
+    $(".frontpage-review__slider").owlCarousel({
+      loop: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        1140: {
+          items: 3
+        }
+      }
+    });
   });
 })(jQuery);

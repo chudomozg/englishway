@@ -28,7 +28,9 @@
                 <div class="frontpage-review__title col-12">
                     <h3>Отзывы</h3>
                 </div>
-                <div class="frontpage-review__slider col-12 owl-carousel"></div>
+                <div class="frontpage-review__slider reviews col-12 owl-carousel">
+                    <?php echo (ew_get_frontpage_review()) ?>  
+                </div>
 
 
             </div>

@@ -1,4 +1,5 @@
 <?php
+require get_template_directory() . '/classes/test-widget.php';
 
 //стили и шрифты
 function ew_add_css(){
@@ -26,9 +27,9 @@ function ew_add_widget_support() {
     register_sidebar( array(
                     'name' => 'Sidebar',
                     'id' => 'sidebar',
-                    'before_widget' => '<div class="widget_wrapper">',
+                    'before_widget' => '<div class="widget">',
                     'after_widget' => '</div>',
-                    'before_title' => '<h2 class="widget_title">',
+                    'before_title' => '<h2 class="widget-title">',
                     'after_title' => '</h2>',
     ) );
 }
@@ -150,6 +151,25 @@ function ew_get_frontpage_review(){
 
       while ( $result_query->have_posts() ) {
         $result_query->the_post();
+        $id=get_the_ID();
+        $img=get_the_post_thumbnail();
+        $link=get_permalink($id);
+        $text=get_field('review_body',$id);
+        $date=get_field('review_date',$id);
+        $name=get_field('review_name',$id);
+
+        $outer_html.="
+            <div class='reviews__review review row'>
+                <div class='review__img col-8'>
+                    $img
+                </div>
+                <div class='review__name col-12'>$name</div>
+                <div class='review__text col-12'>".wp_trim_words( $text, 26, "...")."</div>
+                <div class='review__link-more col-12'>
+                    <a href='$link'>Читать целиком</a>
+                </div>
+            </div>
+        ";
 
       }
       wp_reset_postdata();
