@@ -33,7 +33,7 @@ class ew_test_Widget extends WP_Widget {
     ";
     $ico=  "<div class='test-widget__ico'><img src='".get_template_directory_uri()."/assets/images/ico_test_widget_skype.svg'></div> ";
     $message    = "<div class='test-widget__message col-10 text-center'>".$instance['message']."</div>";
-    $button = "<div class='test-widget__button button col-10 w-100 primary-deep'><a href='/test' class=' '>Начать</a></div>";
+    $button = "<div class='test-widget__button button button_red col-9 p-0 w-100 primary-deep'><a href='/test' class=' '>Начать</a></div>";
     $after_widget ="</div></div>";  
        
     echo $before_widget;       

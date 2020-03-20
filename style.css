@@ -7,7 +7,7 @@ Author URI: https://imake.site
 */
 
 body {
-  font-family: "Open Sans";
+  font-family: "Open Sans" !important;
 }
 
 header {
@@ -27,6 +27,13 @@ input[type="submit"] {
   text-transform: uppercase;
 }
 
+input[type="text"],
+input[type="tel"],
+input[type="email"] {
+  background-color: #e5e5e5;
+  border: none;
+}
+
 .button {
   display: flex;
   align-items: center;
@@ -34,6 +41,12 @@ input[type="submit"] {
   -webkit-box-shadow: 8px 8px 8px 0px rgba(227, 11, 19, 0.25);
   -moz-box-shadow: 8px 8px 8px 0px rgba(227, 11, 19, 0.25);
   box-shadow: 8px 8px 8px 0px rgba(227, 11, 19, 0.25);
+  padding: 6px;
+  border: none;
+}
+
+.button_red {
+  font-size: 12px;
 }
 
 .button a,
@@ -45,10 +58,76 @@ input[type="submit"] {
 
 main {
   background-color: #ebebf8;
+  padding-top: 30px;
 }
 
-.slide__img img {
-  object-fit: cover;
+.contetnt-block {
+  background-color: #fff;
+}
+
+.contetnt-block__title,
+.contetnt-block__title h3 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px !important;
+  text-transform: uppercase;
+  text-align: center;
+  color: #333333;
+  letter-spacing: 0.1em;
+}
+
+.contetnt-block__title {
+  padding-bottom: 46px;
+}
+
+.contetnt-block__title-delimiter {
+  height: 1px;
+  width: 150px;
+  border-bottom: 1px solid #b3b3b3;
+  margin: 14px auto 0 auto;
+}
+
+.contetnt-block__title h3 {
+  margin: 0;
+}
+
+.primary-deep {
+  background-color: #e30b13;
+  color: #fff !important;
+}
+
+.slide {
+  height: 100%;
+}
+
+.slide__img {
+  background-size: cover !important;
+  height: 100%;
+}
+
+.slide__message {
+  position: relative;
+}
+
+.slide__text {
+  margin-top: 15px;
+  color: #fff;
+}
+
+.slide__button {
+  margin-top: 22px;
+}
+
+.slide__message a,
+.slide__message a:hover,
+.slide__message a:visited {
+  text-decoration: none;
+  color: #fff;
+}
+
+.slide__title {
+  color: #fff;
+  font-weight: bold;
 }
 
 .review__img img {
@@ -75,24 +154,297 @@ main {
   color: #fff;
 }
 
-.primary-deep {
-  background-color: #e30b13;
-  color: #fff;
-}
+/* Виджеты */
 
 .widget {
   border-radius: 4px;
   background-color: #fff;
+  margin-bottom: 18px;
+  padding: 18px 0 32px;
+}
+
+.widget-title {
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
 }
 
 .test-widget__wrapper {
   border-radius: 4px;
 }
 
+/* Виджет инстаграмма */
+.sbi_follow_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-shadow: 8px 8px 8px 0px rgba(227, 11, 19, 0.25);
+  -moz-box-shadow: 8px 8px 8px 0px rgba(227, 11, 19, 0.25);
+  box-shadow: 8px 8px 8px 0px rgba(227, 11, 19, 0.25);
+  border-radius: 25px !important;
+  text-transform: uppercase;
+  width: 75%;
+  margin: 5px auto 0 auto !important;
+}
+
+.sbi_follow_btn a {
+  border-radius: 25px !important;
+  width: 100%;
+}
+
+#sb_instagram {
+  padding-bottom: 0 !important;
+}
+
+/* виджет VK */
+.ew-vk-widget {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.ew-vk-widget__title {
+  text-align: center;
+  margin-bottom: 15px;
+  line-height: 150%;
+}
+
+/* Изучайте онлайн widget */
+.test-widget {
+  padding: 0 !important;
+}
+
+/* Виджет теста */
+.ew-online-test-widget {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.ew-online-test-widget__ul {
+  list-style-type: none;
+  padding: 0 46px;
+}
+
+.ew-online-test-widget__ul li {
+  margin-bottom: 5px;
+}
+
+.ew-online-test-widget__link {
+  text-decoration: underline !important;
+}
+
+.ew-online-test-widget__link::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background: url("./assets/images/list-style-img.svg") no-repeat;
+  position: absolute;
+  left: 30px;
+}
+
+/* trial lesson widget  */
+.trial-lesson {
+  padding: 0 25px;
+}
+
+.trial-lesson__title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 10px 0 7px 0;
+}
+
+.trial-lesson input {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.trial-lesson input.trial-lesson__button {
+  margin-bottom: 0;
+  padding: 8px 0;
+}
+
+.trial-lesson p {
+  margin: 0;
+}
+
+.trial-lesson label {
+  margin-bottom: 0;
+}
+
+.trial-lesson__button {
+  margin-top: 30px;
+}
+
+/* teachers widget */
+.teacher-widget {
+  padding: 30px 0 20px;
+}
+
+.teacher-widget__link {
+  padding: 0px 5px !important;
+}
+
+.teacher-widget__img {
+  border-radius: 4px;
+}
+
+.teacher-widget__message {
+  margin-top: 15px;
+}
+
+a.teacher-widget__message-link,
+a.teacher-widget__message-link:visited,
+a.teacher-widget__message-link:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* sliders */
+
+.owl-dot {
+  background-color: #b2b2b2 !important;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  margin-right: 12px;
+  border: none;
+}
+
+.owl-dot.active {
+  background-color: #e30b13 !important;
+}
+
+.slider-more-link a,
+.slider-more-link a:hover,
+.slider-more-link a:visited {
+  color: #808080;
+  font-weight: normal;
+  font-size: 16px;
+  text-decoration: underline;
+  position: relative;
+  top: -2px;
+}
+
+.frontpage-gallery .owl-stage-outer {
+  margin-bottom: 30px;
+}
+
+.frontpage-review .owl-stage {
+  display: flex;
+}
+
+.frontpage-review .owl-item {
+  display: flex;
+  flex: 1 0 auto;
+}
+
+.review__name {
+  color: #808080;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.review__link-more a,
+.review__link-more a:hover,
+.review__link-more a:visited {
+  text-decoration: underline;
+  color: #808080;
+}
+
+.review__link-ico {
+  width: 24px;
+  height: 24px;
+  background: url(./assets/images/list-style-img.svg) no-repeat center;
+  margin-right: 12px;
+}
+
+.frontpage-review .owl-stage-outer {
+  margin-bottom: 30px;
+}
+
+.slider__overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: #050505;
+  opacity: 0.4;
+}
+
+.banner-navigation,
+.slider-navigation {
+  display: flex;
+}
+
+.banner-navigation {
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  top: -20px;
+  z-index: 20;
+}
+
+.banner-navigation__prev,
+.banner-navigation__next,
+.slider-navigation__prev,
+.slider-navigation__next {
+  background-color: #e30b13 !important;
+  border: none;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  background: url(./assets/images/banner_prev_arrow.svg) no-repeat center;
+}
+
+.banner-navigation__dots,
+.slider-navigation__dots {
+  display: flex;
+  align-items: center;
+}
+
+.banner-navigation__prev,
+.slider-navigation__prev {
+  margin-right: 12px;
+}
+
+.banner-navigation__next,
+.slider-navigation__next {
+  transform: rotate(180deg);
+}
+
+.slider-navigation__next {
+  margin-right: 12px;
+}
+
+/* / main-banner */
+.main-banner-xl {
+  margin-bottom: -21px !important;
+}
+
+.main-banner-xl .owl-item {
+  height: 480px;
+}
+
+/* MEDIA */
 /* /* Экстрамалые девайсы («портретные телефоны», < 576px)* */
 @media (max-width: 575.98px) {
   .test-widget {
     height: 210px;
+  }
+
+  .slide__title {
+    font-size: 38px;
+    line-height: 100%;
+  }
+
+  .slide__message {
+    padding: 50px 0 0 20px !important;
   }
 }
 
@@ -102,6 +454,14 @@ main {
 
 /* // Средние девайсы («таблетки», >= 768px) */
 @media (min-width: 768px) and (max-width: 991.98px) {
+  .slide__title {
+    font-size: 44px;
+    line-height: 125%;
+  }
+
+  .slide__message {
+    padding: 60px 0 0 40px !important;
+  }
 }
 
 /* // Большие девайсы (большие десктопы, >= 992px) */
@@ -112,5 +472,63 @@ main {
 @media (min-width: 1200px) {
   .test-widget {
     height: 184px;
+  }
+
+  .widget {
+    -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: 1px solid #b2b2b2;
+  }
+
+  .diff {
+    margin-bottom: 73px;
+  }
+
+  .ability {
+    margin-bottom: 15px;
+  }
+
+  .ability__text {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #b3b3b3;
+  }
+
+  .ability_number-9 .ability__text,
+  .ability_number-10 .ability__text {
+    border-bottom: none;
+  }
+
+  .you-can {
+    justify-content: space-between;
+  }
+
+  main {
+    padding-bottom: 50px;
+  }
+
+  .contetnt-block {
+    padding: 50px 60px 80px;
+    margin-top: 16px;
+    border-radius: 4px;
+    border: 1px solid #b2b2b2;
+  }
+
+  .contetnt-block.differences {
+    padding: 50px 60px 35px;
+  }
+
+  .frontpage-review .owl-dots,
+  .frontpage-gallery .owl-dots {
+    float: left;
+  }
+
+  .slide__title {
+    font-size: 60px;
+    line-height: 125%;
+  }
+
+  .slide__message {
+    padding: 80px 0 0 80px !important;
   }
 }
