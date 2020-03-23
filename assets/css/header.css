@@ -103,6 +103,7 @@
   display: flex;
   justify-content: center;
   margin: 0;
+  padding: 0;
 }
 
 .menu-header-container {
@@ -116,7 +117,7 @@
 
 #menu-header li {
   display: block;
-  margin: 0 31px;
+  margin: 0 30px;
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 600;
@@ -212,7 +213,7 @@
 }
 
 /*XL*/
-@media (min-width: 1446px) {
+/* @media (min-width: 1446px) {
   .header_wrapper {
     max-width: 1366px;
     margin: 18px auto 0 auto;
@@ -224,61 +225,27 @@
     -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
-}
+} */
 
 /*FullHD*/
-@media (max-width: 1446px) {
-  .header_wrapper {
-    max-width: 1366px;
-    margin: 18px 40px 0 40px;
-  }
-
-  header {
-    position: relative;
-    -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  }
-}
+/* @media (max-width: 1446px) {
+} */
 
 /*Tablet*/
-@media (max-width: 1100px) {
-  header {
-    position: inherit;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-  }
-
-  .header_wrapper__header {
-    padding-bottom: 17px;
-  }
-
-  .header_wrapper {
-    margin: 20px 25px 0 25px;
-  }
-
-  .middle_contact_wrapper {
-    flex-basis: 350px;
-  }
-
-  .header__hemail {
-    margin: 23px 0 0 0;
-  }
-
-  .header__haddress {
-    margin: 12px 0 0 -37px;
-  }
-
-  .hemail__email,
-  .haddress__wearehere,
-  .haddress__address {
-    font-size: 14px;
-  }
-}
+/* @media (max-width: 1100px) {
+} */
 
 /*Phone*/
-@media (max-width: 820px) {
+/* @media (max-width: 820px) {
+} */
+
+/* MEDIA */
+/* /* Экстрамалые девайсы XS («портретные телефоны», < 576px)* */
+@media (max-width: 575.98px) {
+}
+
+/* //Экстрамалые девайсы XS («портретные телефоны», < 576px) и  Малые девайсы SM («ландшафтные», >= 575px) */
+@media (max-width: 767.98px) {
   .header {
     flex-direction: column;
   }
@@ -347,5 +314,63 @@
     height: 2px;
     width: 100%;
     position: relative;
+  }
+}
+
+/* // Средние девайсы MD («таблетки», >= 768px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  header {
+    position: inherit;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .header_wrapper__header {
+    padding-bottom: 17px;
+  }
+
+  .header_wrapper {
+    margin: 20px 25px 0 25px;
+  }
+
+  .middle_contact_wrapper {
+    flex-basis: 350px;
+  }
+
+  .header__hemail {
+    margin: 23px 0 0 0;
+  }
+
+  .header__haddress {
+    margin: 12px 0 0 -37px;
+  }
+
+  .hemail__email,
+  .haddress__wearehere,
+  .haddress__address {
+    font-size: 14px;
+  }
+}
+
+/* // Большие девайсы LG (большие десктопы, >= 992px) и XL (большие десктопы, >= 1200px)  */
+@media (min-width: 992px) {
+  .header_wrapper {
+    max-width: 960px;
+    margin: 18px auto 0 auto;
+  }
+
+  header {
+    position: relative;
+    -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* // Большие девайсы XL (большие десктопы, >= 1200px) */
+@media (min-width: 1200px) {
+  .header_wrapper {
+    max-width: 1140px;
   }
 }

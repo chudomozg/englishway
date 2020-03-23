@@ -41,7 +41,7 @@ input[type="email"] {
   -webkit-box-shadow: 8px 8px 8px 0px rgba(227, 11, 19, 0.25);
   -moz-box-shadow: 8px 8px 8px 0px rgba(227, 11, 19, 0.25);
   box-shadow: 8px 8px 8px 0px rgba(227, 11, 19, 0.25);
-  padding: 6px;
+  padding: 8px;
   border: none;
 }
 
@@ -112,6 +112,7 @@ main {
 .slide__text {
   margin-top: 15px;
   color: #fff;
+  font-size: 22px;
 }
 
 .slide__button {
@@ -140,6 +141,21 @@ main {
   height: 24px;
 }
 
+.ability__hide-link,
+.ability__hide-link:hover,
+.ability__hide-link:visited {
+  color: #7d7d7d;
+  text-decoration: underline;
+}
+
+.diff__title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+/* Виджеты */
+
 .test-widget {
   background: url("./assets/images/test_widget_bg.png") no-repeat;
   background-size: cover;
@@ -154,13 +170,11 @@ main {
   color: #fff;
 }
 
-/* Виджеты */
-
 .widget {
-  border-radius: 4px;
   background-color: #fff;
-  margin-bottom: 18px;
+
   padding: 18px 0 32px;
+  border: 1px solid #b2b2b2;
 }
 
 .widget-title {
@@ -334,6 +348,10 @@ a.teacher-widget__message-link:hover {
   margin-bottom: 30px;
 }
 
+.frontpage-gallery__slider .owl-item img {
+  height: 175px;
+}
+
 .frontpage-review .owl-stage {
   display: flex;
 }
@@ -349,11 +367,59 @@ a.teacher-widget__message-link:hover {
   margin: 8px 0;
 }
 
+.frontpage-review__nav {
+  justify-content: space-between;
+  width: 100%;
+  padding: 0px 25px;
+  position: relative;
+  top: -160px;
+  cursor: pointer;
+}
+
+.frontpage-gallery .owl-item img {
+  object-fit: cover;
+}
+
+.frontpage-review__prev,
+.frontpage-review__next,
+.frontpage-gallery__tablet-prev,
+.frontpage-gallery__tablet-next {
+  background: url(./assets/images/prev_mobile.svg) no-repeat center;
+  width: 25px;
+  height: 25px;
+}
+
+.frontpage-review__next,
+.frontpage-gallery__tablet-next {
+  transform: rotate(180deg);
+}
+
 .review__link-more a,
 .review__link-more a:hover,
 .review__link-more a:visited {
   text-decoration: underline;
   color: #808080;
+}
+
+.review__date {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.review__quotation-mark {
+  height: 10px;
+  background: url(./assets/images/quotation-mark.svg) no-repeat left;
+}
+
+.review__quotation-mark_down {
+  transform: rotate(180deg);
+  top: -15px;
+  left: -7px;
+}
+
+.review__quotation-mark_up {
+  top: 15px;
+  left: -7px;
 }
 
 .review__link-ico {
@@ -386,7 +452,7 @@ a.teacher-widget__message-link:hover {
   justify-content: center;
   position: relative;
   width: 100%;
-  top: -20px;
+  top: -35px;
   z-index: 20;
 }
 
@@ -424,16 +490,28 @@ a.teacher-widget__message-link:hover {
 
 /* / main-banner */
 .main-banner-xl {
-  margin-bottom: -21px !important;
+  margin-bottom: -16px !important;
 }
 
 .main-banner-xl .owl-item {
   height: 480px;
 }
 
+.ability__hide {
+  justify-content: space-evenly;
+}
+
 /* MEDIA */
 /* /* Экстрамалые девайсы («портретные телефоны», < 576px)* */
 @media (max-width: 575.98px) {
+  main {
+    padding-top: 0;
+  }
+
+  .main-banner-sm .owl-item {
+    height: 310px;
+  }
+
   .test-widget {
     height: 210px;
   }
@@ -443,6 +521,10 @@ a.teacher-widget__message-link:hover {
     line-height: 100%;
   }
 
+  .slide__text {
+    font-size: 20px;
+  }
+
   .slide__message {
     padding: 50px 0 0 20px !important;
   }
@@ -450,10 +532,114 @@ a.teacher-widget__message-link:hover {
 
 /* // Малые девайсы («ландшафтные», >= 575px) */
 @media (min-width: 576px) and (max-width: 767.98px) {
+  main {
+    padding-top: 0;
+  }
+
+  .main-banner-sm .owl-item {
+    height: 310px;
+  }
+
+  .slide__title {
+    font-size: 38px;
+    line-height: 105%;
+  }
+
+  .slide__text {
+    font-size: 20px;
+  }
+
+  .slide__message {
+    padding: 50px 0 0 20px !important;
+  }
 }
 
 /* // Средние девайсы («таблетки», >= 768px) */
 @media (min-width: 768px) and (max-width: 991.98px) {
+  .contetnt-block__title,
+  .contetnt-block__title h3 {
+    font-size: 20px !important;
+  }
+
+  .contetnt-block {
+    border-bottom: 1px solid #b2b2b2;
+  }
+
+  .trial-lesson__title {
+    font-size: 20px;
+  }
+
+  .contetnt-block.differences {
+    padding: 22px 0 5px 25px;
+  }
+
+  .contetnt-block__title {
+    padding-bottom: 20px;
+  }
+
+  .you-can {
+    padding: 25px 30px;
+    justify-content: space-around;
+  }
+
+  .frontpage-review {
+    padding: 22px 12px;
+    border-bottom: none;
+  }
+
+  .frontpage-review .owl-dots {
+    display: none;
+  }
+
+  .frontpage-review__more-link {
+    display: none;
+  }
+
+  .frontpage-review__title {
+    padding-bottom: 30px;
+  }
+
+  .review__img img {
+    height: 50px;
+    width: 50px !important;
+    border-radius: 5px;
+  }
+
+  .review {
+    font-size: 14px;
+    width: 75%;
+  }
+
+  .review__name {
+    color: #333;
+    margin: 0;
+    padding: 6px 0 0 !important;
+  }
+
+  .review__date {
+    color: #808080;
+  }
+
+  .frontpage-gallery__tablet-nav {
+    width: 100%;
+    justify-content: space-between;
+    position: relative;
+    top: -130px;
+    cursor: pointer;
+  }
+
+  .frontpage-gallery__title {
+    padding-bottom: 40px;
+  }
+
+  .frontpage-gallery__slider-navigation {
+    justify-content: center;
+  }
+
+  .ability {
+    margin-bottom: 20px;
+  }
+
   .slide__title {
     font-size: 44px;
     line-height: 125%;
@@ -462,14 +648,40 @@ a.teacher-widget__message-link:hover {
   .slide__message {
     padding: 60px 0 0 40px !important;
   }
+
+  .banner-navigation {
+    top: -40px;
+  }
+
+  .main-banner-sm .owl-item {
+    height: 400px;
+  }
+
+  .widget {
+    border-radius: 0;
+    margin-bottom: -1px;
+  }
+
+  .ew-online-test-widget__link::before {
+    left: 15px;
+  }
+
+  .main-banner-sm .banner {
+    margin: 0 0 -24px 0 !important;
+  }
+
+  .diff {
+    margin-bottom: 25px;
+  }
+
+  .diff__ico img {
+    position: relative;
+    top: -10px;
+  }
 }
 
 /* // Большие девайсы (большие десктопы, >= 992px) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-}
-
-/* // Большие девайсы (большие десктопы, >= 1200px) */
-@media (min-width: 1200px) {
   .test-widget {
     height: 184px;
   }
@@ -478,7 +690,80 @@ a.teacher-widget__message-link:hover {
     -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    margin-bottom: 18px;
+  }
+
+  .diff {
+    margin-bottom: 40px;
+  }
+
+  .ability {
+    margin-bottom: 15px;
+  }
+
+  .ability__text {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #b3b3b3;
+  }
+
+  .ability_number-9 .ability__text,
+  .ability_number-10 .ability__text {
+    border-bottom: none;
+  }
+
+  .you-can {
+    justify-content: space-evenly;
+  }
+
+  main {
+    padding-bottom: 50px;
+  }
+
+  .contetnt-block {
+    padding: 50px 30px 50px;
+    margin-top: 16px;
+    border-radius: 4px;
     border: 1px solid #b2b2b2;
+  }
+
+  .frontpage-review .owl-dots,
+  .frontpage-gallery .owl-dots {
+    float: left;
+    margin-left: 15px;
+  }
+
+  .slide__title {
+    font-size: 54px;
+    line-height: 125%;
+  }
+
+  .slide__message {
+    padding: 80px 0 0 80px !important;
+  }
+
+  .contetnt-block.differences {
+    padding: 50px 10px 20px;
+    justify-content: space-evenly;
+  }
+}
+
+/* // Большие девайсы (большие десктопы, >= 1200px) */
+@media (min-width: 1200px) {
+  .ability__hide {
+    justify-content: space-between;
+  }
+
+  .test-widget {
+    height: 184px;
+  }
+
+  .widget {
+    -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    margin-bottom: 18px;
   }
 
   .diff {
@@ -516,11 +801,13 @@ a.teacher-widget__message-link:hover {
 
   .contetnt-block.differences {
     padding: 50px 60px 35px;
+    justify-content: space-evenly;
   }
 
   .frontpage-review .owl-dots,
   .frontpage-gallery .owl-dots {
     float: left;
+    margin-left: 15px;
   }
 
   .slide__title {

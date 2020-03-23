@@ -18,6 +18,8 @@ add_action( 'wp_enqueue_scripts', 'ew_add_css' );
 function ew_add_js(){
     wp_enqueue_script( 'jquery');
     wp_enqueue_script( 'owl-carousel', get_template_directory_uri()."/assets/js/owl.carousel.min.js");
+    wp_enqueue_script( 'bootstrap-js', get_template_directory_uri()."/assets/js/bootstrap.min.js");
+    wp_enqueue_script( 'dif-accordion', get_template_directory_uri()."/assets/js/differences_accordion.js");
     wp_enqueue_script( 'vk-widget', "https://vk.com/js/api/openapi.js?167");
     wp_enqueue_script( 'ew-mobile-menu', get_template_directory_uri()."/assets/js/menu.js");
     wp_enqueue_script( 'ew-slider', get_template_directory_uri()."/assets/js/slider.js");
@@ -75,14 +77,14 @@ function ew_get_sliders(){
         $link_end = (!empty($link_url)) ? "</a>" : false;
         $button_array=get_field('slider_button',$id) ;
         $button=(count($button_array["slider_button_on"]) && !empty($link)) 
-        ? ("<div class='button button_red primary-deep col-xl-7 col-md-8 col-sm-10 w-100'>".$button_array['slider_button_text']."</div>")
+        ? ("<div class='button button_red primary-deep col-xl-7 col-md-8 col-xs-10 w-100'>".$button_array['slider_button_text']."</div>")
         : false;
 
         $outer_html .="
         <div class='slide'>
             <div class='slider__overlay'></div>
             <div class='slide__img' style='background: url($img) no-repeat;'>
-                <div class='slide__message col-xl-7 col-md-8 col-sm-12'>
+                <div class='slide__message col-xl-7 col-md-8 col-xs-12'>
                 $link
                     <div class='slide__title'>$title</div>
                     <div class='slide__text'>$desc</div>
@@ -103,17 +105,19 @@ function ew_get_differences(){
     $diffences = get_field('differences',get_the_ID());
     $outer_html ="";
     $diff_number= 1;
+    $show = "";
     foreach ($diffences as $diff){
+        $show = ($diff_number == 1) ? "show" : "";
         $outer_html .= "
-        <div class='diff col-xl-6 row'>
-            <div class='diff__ico col-auto p-xl-0'>
+        <div class='diff col-12 col-lg-6 row'>
+            <div class='diff__ico col-auto p-0'>
                 <img src='".get_template_directory_uri()."/assets/images/diff_ico_ $diff_number.svg'/>
             </div>
-            <div class='diif__wrapper col p-xl-0'>
-                <div class='diff__title col-12'>
-                    ".$diff['title']."
+            <div class='diif__wrapper col p-0'>
+                <div class='diff__title col-12' data-toggle='collapse' data-target='#diff__text_$diff_number'>
+                   ".$diff['title']."
                 </div>
-                <div class='diff__text col-12'>
+                <div id='diff__text_$diff_number' class='diff__text d-lg-block col-12 $show' data-parent='.differences-accordion'>
                     ".$diff['text']."
                 </div>
             </div>
@@ -129,8 +133,11 @@ function ew_get_you_can(){
     $outer_html ="";
     $ability_number = 1;
     foreach ($abilitys as $ab){
+        if ($ability_number==5){
+            $outer_html .="<div class='ability__hide row mx-0'>";
+        }
         $outer_html .= "
-            <div class='ability ability_number-$ability_number col-xl-6 row'>
+            <div class='ability ability_number-$ability_number col-lg-6 row'>
                 <div class='ability__ico col-auto'>
                 </div>
                 <div class='ability__text col'>
@@ -140,6 +147,10 @@ function ew_get_you_can(){
         ";
         $ability_number++;
     }
+    $outer_html .="</div>";
+    $outer_html .=" <div class='.ability__hide-wrapper d-lg-none'>
+                        <a class='ability__hide-link' href='.ability__hide' data-toggle='collapse'>а так же ▼</a>
+                    </div>";
 
     return $outer_html;
 }
@@ -164,14 +175,19 @@ function ew_get_frontpage_review(){
         $name=get_field('review_name',$id);
 
         $outer_html.="
-            <div class='reviews__review review row'>
-                <div class='review__img col-8'>
+            <div class='reviews__review review row mx-auto'>
+                <div class='review__img col-auto col-lg-8'>
                     $img
                 </div>
-                <div class='review__name col-12'>$name</div>
+                <div class='review__name col-auto col-lg-12'>
+                    $name
+                    <div class='review__date d-lg-none d-block'>$date</div>
+                </div>
+                <div class='review__quotation-mark review__quotation-mark_up d-block d-lg-none col-12'></div>
                 <div class='review__text col-12'>".wp_trim_words( $text, 20, "...")."</div>
+                <div class='review__quotation-mark review__quotation-mark_down d-md-block d-none d-lg-none col-12'></div>
                 <div class='review__link-more d-flex col-12'>
-                    <div class='review__link-ico'></div>
+                    <div class='review__link-ico d-none d-lg-block'></div>
                     <a href='$link'>Читать целиком</a>
                 </div>
             </div>
@@ -215,7 +231,7 @@ function ew_get_frontpage_random_gellery_img(){
       $image_random_keys = array_rand($images, $random_count);
       
       foreach ($image_random_keys as $key){
-        $outer_html.= wp_get_attachment_image($images[$key]);
+        $outer_html.= wp_get_attachment_image($images[$key],"medium");
       }
 
       return $outer_html;

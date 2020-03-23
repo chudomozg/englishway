@@ -1,16 +1,23 @@
 <?php get_header(); ?>
 <main>
-    <section class="main container">
+    <section class="main container-md container-fluid px-0 px-md-3">
     <div class="row">
-        <div class="banner main-banner-sm col-12 d-xl-none d-sm-block owl-carousel">
-            <?php echo (ew_get_sliders()) ?>        
-        </div>
-        <div class="sidebar col-sm-12 col-xl-3 col-md-4 order-md-2 order-xl-1">
+        <div class="col-12 main-banner-sm px-md-0 d-lg-none d-block">
+            <div class="row banner m-0 owl-carousel">
+                <?php echo (ew_get_sliders()) ?>        
+            </div>
+            <div class="banner__nav banner-navigation">
+                <button class="banner-navigation__prev"></button>
+                <div class="banner-navigation__dots"></div>
+                <button class="banner-navigation__next"></button>
+            </div>
+        </div>       
+        <div class="sidebar px-sm-0 px-lg-3 col-12 col-xl-3 col-md-4 order-md-2 order-xl-1">
             <?php get_sidebar(); ?>
         </div>
-        <div class="content col-sm-12 col-md-8 col-xl-9">
-            <div class="row d-xl-block d-sm-none">
-                <div class="banner main-banner-xl owl-carousel">
+        <div class="content col-12 col-md-8 col-xl-9">
+            <div class="row d-lg-block d-none main-banner-xl">
+                <div class="banner owl-carousel">
                     <?php echo(ew_get_sliders()) ?>    
                 </div>
                 <div class="banner__nav banner-navigation">
@@ -19,7 +26,7 @@
                     <button class="banner-navigation__next"></button>
                 </div>
             </div>
-            <div class="differences contetnt-block row ">
+            <div class="differences differences-accordion contetnt-block row ">
                 <div class="differences__title contetnt-block__title col-12">
                     <h3>Наши отличия</h3>
                     <div class="contetnt-block__title-delimiter"></div>
@@ -38,8 +45,12 @@
                     <h3>Отзывы</h3>
                     <div class="contetnt-block__title-delimiter"></div>
                 </div>
-                <div class="frontpage-review__slider reviews col-12 owl-carousel">
+                <div class="frontpage-review__slider reviews col-md-10 col-lg-12 mx-md-auto mx-lg-0 owl-carousel">
                     <?php echo (ew_get_frontpage_review()) ?>  
+                </div>
+                <div class="frontpage-review__nav d-flex d-lg-none">
+                    <div class="frontpage-review__prev"></div>
+                    <div class="frontpage-review__next"></div>
                 </div>
             </div>
             <div class="frontpage-gallery contetnt-block row">
@@ -47,16 +58,19 @@
                     <h3>Галерея</h3>
                     <div class="contetnt-block__title-delimiter"></div>
                 </div>
-                <div class="col-12">
-                    <div class="frontpage-gallery__slider owl-carousel">
+                <div class="col-12 px-lg-0">
+                    <div class="frontpage-gallery__slider px-lg-0 col-12 col-md-10 col-lg-12 mx-md-auto owl-carousel">
                         <?php echo (ew_get_frontpage_random_gellery_img()) ?>
                     </div>
-                    
                     <div class="frontpage-gallery__slider-navigation slider-navigation">
-                        <button class="slider-navigation__prev"></button>
-                        <div class="slider-navigation__dots"></div>
-                        <button class="slider-navigation__next"></button>
+                        <button class="slider-navigation__prev d-md-none d-lg-block"></button>
+                        <div class="slider-navigation__dots d-md-none d-lg-block"></div>
+                        <button class="slider-navigation__next d-md-none d-lg-block"></button>
                         <div class='frontpage-gallery__more-link slider-more-link'><a href='/gallery'>Смотреть все фото</a></div>
+                    </div>
+                    <div class="frontpage-gallery__tablet-nav d-flex d-none d-md-flex d-lg-none">
+                        <div class="frontpage-gallery__tablet-prev"></div>
+                        <div class="frontpage-gallery__tablet-next"></div>
                     </div>
                 </div>
             </div>
