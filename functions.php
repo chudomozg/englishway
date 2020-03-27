@@ -77,7 +77,7 @@ function ew_get_sliders(){
         $link_end = (!empty($link_url)) ? "</a>" : false;
         $button_array=get_field('slider_button',$id) ;
         $button=(count($button_array["slider_button_on"]) && !empty($link)) 
-        ? ("<div class='button button_red primary-deep col-xl-7 col-md-8 col-xs-10 w-100'>".$button_array['slider_button_text']."</div>")
+        ? ("<div class='button button_red primary-deep col-8 col-sm-6 col-xl-7 col-md-7 col-xs-10 w-100'>".$button_array['slider_button_text']."</div>")
         : false;
 
         $outer_html .="
@@ -183,11 +183,11 @@ function ew_get_frontpage_review(){
                     $name
                     <div class='review__date d-lg-none d-block'>$date</div>
                 </div>
-                <div class='review__quotation-mark review__quotation-mark_up d-block d-lg-none col-12'></div>
+                <div class='review__quotation-mark review__quotation-mark_up d-md-block d-none col-12'></div>
                 <div class='review__text col-12'>".wp_trim_words( $text, 20, "...")."</div>
                 <div class='review__quotation-mark review__quotation-mark_down d-md-block d-none d-lg-none col-12'></div>
                 <div class='review__link-more d-flex col-12'>
-                    <div class='review__link-ico d-none d-lg-block'></div>
+                    <div class='review__link-ico  d-block d-md-none d-lg-block'></div>
                     <a href='$link'>Читать целиком</a>
                 </div>
             </div>

@@ -14,6 +14,11 @@ header {
   display: flex;
 }
 
+#primary-sidebar {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
 a,
 a:visited,
 a:hover {
@@ -506,6 +511,74 @@ a.teacher-widget__message-link:hover {
 @media (max-width: 575.98px) {
   main {
     padding-top: 0;
+    background-color: #fff;
+  }
+
+  .contetnt-block {
+    padding: 35px 30px 20px 30px;
+    border-bottom: 1px solid #b2b2b2;
+  }
+
+  .differences__title {
+    padding-bottom: 30px;
+  }
+
+  .diff__title {
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .diff {
+    margin-bottom: 20px;
+    align-items: center;
+  }
+
+  .diff__ico {
+    align-self: flex-start;
+  }
+
+  .you-can {
+    justify-content: space-around;
+  }
+
+  .ability {
+    margin-bottom: 20px;
+  }
+
+  .ew-vk-widget__wrapper {
+    display: none;
+  }
+
+  .ew-instagram-widget {
+    display: none;
+  }
+
+  .frontpage-review .owl-dots {
+    float: left;
+    margin-right: 15px;
+  }
+
+  .frontpage-review__title {
+    padding-bottom: 35px;
+  }
+
+  .review__img img {
+    height: 70px;
+    width: 70px !important;
+  }
+
+  .review__name {
+    color: #333333;
+    padding: 27px 0 0 3px !important;
+    margin: 0;
+  }
+
+  .review__date {
+    color: #808080;
+  }
+
+  .main-banner-sm {
+    margin-bottom: -20px !important;
   }
 
   .main-banner-sm .owl-item {
@@ -528,16 +601,115 @@ a.teacher-widget__message-link:hover {
   .slide__message {
     padding: 50px 0 0 20px !important;
   }
+
+  .frontpage-gallery {
+    padding: 35px 0 20px 0;
+  }
+
+  .frontpage-gallery__slider-navigation {
+    justify-content: center;
+    margin-top: -10px;
+  }
+
+  .frontpage-gallery__more-link {
+    text-align: center;
+    margin: 15px auto 10px auto;
+  }
+
+  .frontpage-gallery__title {
+    padding-bottom: 35px;
+  }
+
+  .widget {
+    border: none;
+    border-bottom: 1px solid #b2b2b2;
+  }
+
+  .trial-lesson__wrapper {
+    order: 2;
+  }
+
+  .widget__test-widget {
+    order: 3;
+    border-bottom: none;
+  }
 }
 
 /* // Малые девайсы («ландшафтные», >= 575px) */
 @media (min-width: 576px) and (max-width: 767.98px) {
   main {
     padding-top: 0;
+    background-color: #fff;
+  }
+
+  .contetnt-block {
+    padding: 35px 30px 20px 30px;
+    border-bottom: 1px solid #b2b2b2;
+  }
+
+  .differences__title {
+    padding-bottom: 30px;
+  }
+
+  .diff__title {
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .diff {
+    margin-bottom: 20px;
+    align-items: center;
+  }
+
+  .diff__ico {
+    align-self: flex-start;
+  }
+
+  .you-can {
+    justify-content: space-around;
+  }
+
+  .ability {
+    margin-bottom: 20px;
+  }
+
+  .frontpage-review .owl-dots {
+    float: left;
+    margin-right: 15px;
+  }
+
+  .frontpage-review__title {
+    padding-bottom: 35px;
+  }
+
+  .review__img img {
+    height: 70px;
+    width: 70px !important;
+  }
+
+  .review__name {
+    color: #333333;
+    padding: 27px 0 0 3px !important;
+    margin: 0;
+  }
+
+  .review__date {
+    color: #808080;
+  }
+  .ew-instagram-widget {
+    display: none;
+  }
+
+  .ew-vk-widget__wrapper {
+    display: none;
   }
 
   .main-banner-sm .owl-item {
     height: 310px;
+  }
+
+  .main-banner-sm {
+    margin-bottom: -20px !important;
   }
 
   .slide__title {
@@ -552,10 +724,43 @@ a.teacher-widget__message-link:hover {
   .slide__message {
     padding: 50px 0 0 20px !important;
   }
+
+  .frontpage-gallery__slider-navigation {
+    justify-content: center;
+    margin-top: -10px;
+  }
+
+  .frontpage-gallery__more-link {
+    text-align: center;
+    margin: 15px auto 10px auto;
+  }
+
+  .frontpage-gallery__title {
+    padding-bottom: 35px;
+  }
+
+  .widget {
+    border: none;
+    border-bottom: 1px solid #b2b2b2;
+  }
+
+  .trial-lesson__wrapper {
+    order: 2;
+  }
+
+  .widget__test-widget {
+    order: 3;
+    border-bottom: none;
+  }
 }
 
 /* // Средние девайсы («таблетки», >= 768px) */
 @media (min-width: 768px) and (max-width: 991.98px) {
+  main {
+    padding-top: 0;
+    background-color: #fff;
+  }
+
   .contetnt-block__title,
   .contetnt-block__title h3 {
     font-size: 20px !important;
@@ -745,6 +950,14 @@ a.teacher-widget__message-link:hover {
   .contetnt-block.differences {
     padding: 50px 10px 20px;
     justify-content: space-evenly;
+  }
+
+  .trial-lesson__text {
+    margin-bottom: 10px;
+  }
+
+  .trial-lesson__input-wrapper {
+    margin-bottom: 7px;
   }
 }
 

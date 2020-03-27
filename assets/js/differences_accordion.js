@@ -13,6 +13,11 @@
         $(".diff__text").removeClass("collapse");
         $(".diff__title").removeAttr("data-toggle");
       }
+      if (ww < 768) {
+        $(".diff__text").removeClass("show");
+      } else if (ww >= 768) {
+        $(".diff__text").first().addClass("show");
+      }
     };
     $(window).resize(function () {
       addAccordionClass();
