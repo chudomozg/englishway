@@ -1,27 +1,23 @@
 <?php get_header(); ?>
 <main>
-  <section class="main container-lg container-fluid">
-      <div class="row">
-        <!-- <div class="sidebar px-0 px-lg-3 col-12 col-xl-3 col-md-4 order-2 order-xl-1">
-            
-        </div> -->
-        
-        <div class="content col-12 col-md-8 col-xl-9">
-            <div class="contetnt-block row">
+    <section class="main container-lg container-fluid">
+    <div class="row">
+        <?php ew_get_right_sidebar(get_field('content_length',get_the_ID())); ?>
+        <div class="content col-12 col-md-8 col-xl-9 pb-lg-3">
+            <div class="contetnt-block main-content row">
               <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-                    <article class="article-full">
-                        <h2><?php the_title(); ?></h2>
-                      <?php the_content(); ?>
-                    </article>
+                <h2 class="main-title"><?php the_title(); ?></h2>
+                <?php the_content(); ?>
               <?php endwhile; else : ?>
-                    <article>
-                      <p>Извините, записи не были найдены!</p>
-                    </article>
+                <article>
+                  <p>Извините, записи не были найдены!</p>
+                </article>
               <?php endif; ?>
-              </div>
+          </div>
         </div>
-        <?php get_sidebar(); ?>
     </div>
-  </section>
+    <?php ew_get_bottom_sidebar(get_field('content_length',get_the_ID())); ?>
+    </section>
+    
 </main>
 <?php get_footer(); ?>

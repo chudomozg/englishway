@@ -66,6 +66,17 @@ main {
   padding-top: 30px;
 }
 
+.main-title {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.content {
+  display: flex;
+  flex-flow: column;
+  justify-content: stretch;
+}
+
 .contetnt-block {
   background-color: #fff;
 }
@@ -99,6 +110,12 @@ main {
 .primary-deep {
   background-color: #e30b13;
   color: #fff !important;
+}
+
+.main-content {
+  margin-top: 0 !important;
+  height: 100%;
+  align-content: flex-start;
 }
 
 .slide {
@@ -160,6 +177,11 @@ main {
 }
 
 /* Виджеты */
+
+.bottom-widget-wrapper {
+  padding-right: 0 !important;
+  margin-bottom: 20px;
+}
 
 .test-widget {
   background: url("./assets/images/test_widget_bg.png") no-repeat;
@@ -233,11 +255,39 @@ main {
   padding: 0 !important;
 }
 
+.test-widget_bottom .widget {
+  height: 100%;
+}
+
+.bottom-widget-wrapper .widget-text,
+.bottom-widget-wrapper .widget-text .widget {
+  height: 100%;
+}
+
 /* Виджет теста */
 .ew-online-test-widget {
   display: flex;
   flex-flow: column;
   align-items: center;
+}
+
+.ew-online-test-widget_bottom .widget-title {
+  margin-bottom: 30px;
+}
+
+.ew-online-test-widget_bottom .ew-online-test-widget__ul li {
+  margin-bottom: 20px;
+}
+
+.ew-online-test-widget_bottom .button {
+  margin-top: 20px;
+}
+
+.ew-online-test-widget_bottom .ew-online-test-widget__link::before {
+  left: 60px;
+}
+
+.primary-sidebar .ew-online-test-widget {
   margin-top: 20px;
 }
 
@@ -277,6 +327,10 @@ main {
   margin: 10px 0 7px 0;
 }
 
+.trial-lesson__text {
+  margin-bottom: 20px;
+}
+
 .trial-lesson input {
   width: 100%;
   margin-bottom: 16px;
@@ -301,7 +355,7 @@ main {
 
 /* teachers widget */
 .teacher-widget {
-  padding: 30px 0 20px;
+  padding: 0 0 20px;
 }
 
 .teacher-widget__link {
@@ -321,6 +375,14 @@ a.teacher-widget__message-link:visited,
 a.teacher-widget__message-link:hover {
   color: #000;
   text-decoration: underline;
+}
+
+.teacher-widget__wrapper {
+  padding-top: 30px;
+}
+
+.ew-instagram-widget_bottom .widget {
+  padding-bottom: 0;
 }
 
 /* sliders */
@@ -506,6 +568,134 @@ a.teacher-widget__message-link:hover {
   justify-content: space-evenly;
 }
 
+.programms-prices {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+}
+
+.programm_price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.programm_price_name {
+  font-weight: bold;
+  margin: 15px auto 30px;
+  text-align: center;
+}
+
+.programm_price_45min,
+.programm_price_60min {
+  text-align: center;
+}
+
+.programm_price_cost {
+  font-weight: bold;
+  font-size: 24px;
+  color: #e30b13;
+  margin-right: 20px;
+}
+
+.button_programm_price {
+  margin-top: 20px;
+  border: 1px solid #e5e5e5;
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(43, 40, 115, 0.25);
+  -moz-box-shadow: 0px 4px 4px 0px rgba(43, 40, 115, 0.25);
+  box-shadow: 0px 4px 4px 0px rgba(43, 40, 115, 0.25);
+}
+
+.button_programm_price a,
+.button_programm_price a:hover,
+.button_programm_price a:visited {
+  color: #2b2873;
+  font-size: 12px;
+  font-weight: 600;
+  width: 200px;
+  text-align: center;
+}
+
+.programm_price_img {
+  height: 105px;
+}
+
+#menu-aboutus {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+.menu-aboutus-container {
+  width: 100%;
+}
+
+#menu-aboutus li a,
+#menu-aboutus li a:hover,
+#menu-aboutus li a:visited {
+  color: #333333;
+}
+
+#menu-aboutus li {
+  margin-right: 30px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  padding-bottom: 3px;
+}
+
+#menu-aboutus .current_page_item {
+  color: #2b2873;
+  border-bottom: 1px solid #2b2873;
+}
+
+#menu-aboutus .current_page_item a,
+#menu-aboutus .current_page_item a:hover,
+#menu-aboutus .current_page_item a:visited {
+  color: #2b2873;
+}
+
+.teacher {
+  max-width: 214px;
+  margin-bottom: 50px;
+}
+
+.teacher img {
+  max-width: 214px;
+  height: 248px;
+  object-fit: cover;
+}
+
+.teacher_lang {
+  margin-bottom: 10px;
+}
+
+.teacher_name {
+  font-weight: bold;
+}
+
+.teacher_exp {
+  color: #e30b13;
+  margin-bottom: 10px;
+}
+
+.teacher_link,
+.teacher_link:hover,
+.teacher_link:visited {
+  color: #808080;
+  text-decoration: underline;
+  margin-left: 33px;
+  margin-top: 10px;
+}
+
+.teacher_link::before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: url("./assets/images/blue_arrow.svg") no-repeat;
+  left: 12px;
+}
+
 /* MEDIA */
 /* /* Экстрамалые девайсы («портретные телефоны», < 576px)* */
 @media (max-width: 575.98px) {
@@ -633,6 +823,42 @@ a.teacher-widget__message-link:hover {
     order: 3;
     border-bottom: none;
   }
+
+  .programm_price {
+    flex-flow: wrap;
+  }
+
+  .main-title {
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .review_page {
+    margin-bottom: 30px;
+  }
+
+  .contact-desc {
+    margin-bottom: 20px;
+  }
+
+  .contact-desc__phone {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .contact-desc__call {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .contact-desc__address {
+    text-align: center;
+  }
+
+  #menu-aboutus {
+    justify-content: center;
+  }
 }
 
 /* // Малые девайсы («ландшафтные», >= 575px) */
@@ -752,6 +978,46 @@ a.teacher-widget__message-link:hover {
     order: 3;
     border-bottom: none;
   }
+
+  .programm_price {
+    flex-flow: wrap;
+  }
+
+  .main-title {
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .review_page {
+    margin-bottom: 30px;
+  }
+
+  .contact-desc {
+    margin-bottom: 20px;
+  }
+
+  .contact-desc {
+    margin-bottom: 20px;
+  }
+
+  .contact-desc__phone {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .contact-desc__call {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .contact-desc__address {
+    text-align: center;
+  }
+
+  #menu-aboutus {
+    justify-content: center;
+  }
 }
 
 /* // Средние девайсы («таблетки», >= 768px) */
@@ -759,6 +1025,10 @@ a.teacher-widget__message-link:hover {
   main {
     padding-top: 0;
     background-color: #fff;
+  }
+
+  .main-content {
+    padding: 25px 50px;
   }
 
   .contetnt-block__title,
@@ -883,6 +1153,48 @@ a.teacher-widget__message-link:hover {
     position: relative;
     top: -10px;
   }
+
+  .programm_price {
+    flex-flow: wrap;
+  }
+
+  .main-title {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .review_page {
+    margin-bottom: 45px;
+  }
+
+  .contact-desc {
+    margin-bottom: 20px;
+  }
+
+  .contact-desc__phone {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .contact-desc__call {
+    margin-bottom: 20px;
+  }
+
+  #menu-aboutus {
+    justify-content: center;
+  }
+
+  .teacher {
+    max-width: 150px;
+    margin-bottom: 50px;
+  }
+
+  .teacher img {
+    max-width: 150px;
+    height: 180px;
+    object-fit: cover;
+  }
 }
 
 /* // Большие девайсы (большие десктопы, >= 992px) */
@@ -959,6 +1271,85 @@ a.teacher-widget__message-link:hover {
   .trial-lesson__input-wrapper {
     margin-bottom: 7px;
   }
+
+  .programm_price {
+    flex-flow: column;
+    max-width: 170px;
+  }
+
+  .programm_price_cost {
+    margin-right: 10px;
+    font-size: 19px;
+  }
+
+  .main-title {
+    font-size: 38px;
+    font-weight: bold;
+  }
+
+  .review_page .review__img img {
+    height: 50px;
+    width: 50px !important;
+    border-radius: 5px;
+  }
+
+  .review_page {
+    font-size: 14px;
+    width: 75%;
+    margin-bottom: 50px;
+  }
+
+  .review_page .review__name {
+    color: #333;
+    margin: 0;
+    padding: 6px 0 0 !important;
+  }
+
+  .review_page .review__date {
+    color: #808080;
+  }
+
+  .review__img img {
+    height: 70px;
+    width: 70px !important;
+  }
+
+  .review__name {
+    color: #333333;
+    padding: 27px 0 0 3px !important;
+    margin: 0;
+  }
+
+  .review__date {
+    color: #808080;
+  }
+
+  .contact-desc {
+    margin-bottom: 40px;
+  }
+
+  .contact-desc__phone {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .contact-desc__main-address {
+    font-size: 20px;
+  }
+
+  .contact-desc__call {
+    margin-bottom: 20px;
+    text-align: right;
+  }
+
+  .contact-desc__dop-address,
+  .contact-desc__schedule {
+    font-size: 14px;
+  }
+
+  #menu-aboutus {
+    justify-content: flex-start;
+  }
 }
 
 /* // Большие девайсы (большие десктопы, >= 1200px) */
@@ -1007,7 +1398,7 @@ a.teacher-widget__message-link:hover {
 
   .contetnt-block {
     padding: 50px 60px 80px;
-    margin-top: 16px;
+    margin-top: 13px;
     border-radius: 4px;
     border: 1px solid #b2b2b2;
   }
@@ -1030,5 +1421,91 @@ a.teacher-widget__message-link:hover {
 
   .slide__message {
     padding: 80px 0 0 80px !important;
+  }
+
+  .bottom-sidebar .widget,
+  .bottom-sidebar .widget-text {
+    height: 100%;
+  }
+
+  .ew-vk-widget_bottom .ew-vk-widget__title {
+    margin-bottom: 32px;
+  }
+
+  .teacher-widget_bottom .widget {
+    padding-top: 96px;
+  }
+
+  .programm_price {
+    flex-flow: column;
+  }
+
+  .main-title {
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  .review_page .review__img img {
+    height: 50px;
+    width: 50px !important;
+    border-radius: 5px;
+  }
+
+  .review_page {
+    font-size: 14px;
+    width: 75%;
+    margin-bottom: 50px;
+  }
+
+  .review_page .review__name {
+    color: #333;
+    margin: 0;
+    padding: 6px 0 0 !important;
+  }
+
+  .review_page .review__date {
+    color: #808080;
+  }
+
+  .review__img img {
+    height: 70px;
+    width: 70px !important;
+  }
+
+  .review__name {
+    color: #333333;
+    padding: 27px 0 0 3px !important;
+    margin: 0;
+  }
+
+  .review__date {
+    color: #808080;
+  }
+
+  .contact-desc {
+    margin-bottom: 40px;
+  }
+
+  .contact-desc__phone {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .contact-desc__main-address {
+    font-size: 20px;
+  }
+
+  .contact-desc__call {
+    margin-bottom: 20px;
+    text-align: right;
+  }
+
+  .contact-desc__dop-address,
+  .contact-desc__schedule {
+    font-size: 14px;
+  }
+
+  #menu-aboutus {
+    justify-content: flex-start;
   }
 }

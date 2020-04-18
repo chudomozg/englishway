@@ -28,13 +28,14 @@ class ew_test_Widget extends WP_Widget {
     
     extract( $args );
 
-    $before_widget ="<div class='widget widget__test-widget test-widget'>
+    $before_widget ="<div class='clear-widget-wrapper ".$instance['classes']."'>
+                      <div class='widget widget__test-widget test-widget'>
                         <div class='test-widget__wrapper row d-flex justify-content-center m-0 h-100'>
     ";
     $ico=  "<div class='test-widget__ico'><img src='".get_template_directory_uri()."/assets/images/ico_test_widget_skype.svg'></div> ";
     $message    = "<div class='test-widget__message col-10 text-center'>".$instance['message']."</div>";
     $button = "<div class='test-widget__button button button_red col-9 p-0 w-100 primary-deep'><a href='/test' class=' '>Начать</a></div>";
-    $after_widget ="</div></div>";  
+    $after_widget ="</div></div></div>";  
        
     echo $before_widget;       
     echo $ico;       
@@ -59,6 +60,7 @@ class ew_test_Widget extends WP_Widget {
       
      $instance = $old_instance;
      $instance['message'] = strip_tags( $new_instance['message'] );
+     $instance['classes'] = strip_tags( $new_instance['classes'] );
       
      return $instance;
       
@@ -75,10 +77,15 @@ class ew_test_Widget extends WP_Widget {
   
     //  $title      = esc_attr( $instance['title'] );
      $message    = esc_attr( $instance['message'] );
+     $classes    = esc_attr( $instance['classes'] );
      ?>
      <p>
          <label for="<?php echo $this->get_field_id('message'); ?>"><?php _e('Текст внутри виджета'); ?></label> 
          <textarea class="widefat" rows="16" cols="20" id="<?php echo $this->get_field_id('message'); ?>" name="<?php echo $this->get_field_name('message'); ?>"><?php echo $message; ?></textarea>
+     </p>
+     <p>
+         <label for="<?php echo $this->get_field_id('classes'); ?>"><?php _e('Классы'); ?></label> 
+         <input style="width:100%;" type="text" id="<?php echo $this->get_field_id('classes'); ?>" name="<?php echo $this->get_field_name('classes'); ?>" value="<?php echo $classes; ?>">
      </p>
   
  <?php 

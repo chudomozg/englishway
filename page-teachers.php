@@ -7,19 +7,13 @@
             <div class="contetnt-block main-content row">
               <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 <h2 class="main-title"><?php the_title(); ?></h2>
-                <?php the_content(); ?>
+                <?php wp_nav_menu( array( 'theme_location' => 'aboutus-menu' ) ); ?> 
+                <?php echo (ew_get_teachers()) ?>
               <?php endwhile; else : ?>
                 <article>
                   <p>Извините, записи не были найдены!</p>
                 </article>
               <?php endif; ?>
-          </div>
-          <div class="contetnt-block programms-prices row">
-                <div class="programms-prices__title contetnt-block__title col-12">
-                    <h3>Цены</h3>
-                    <div class="contetnt-block__title-delimiter"></div>
-                </div>
-                <?php echo(ew_get_programms_prices()); ?>
           </div>
         </div>
     </div>

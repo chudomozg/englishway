@@ -29,12 +29,44 @@ add_action( 'wp_enqueue_scripts', 'ew_add_js' );
 // Регистрирует новую боковую панель под названием 'sidebar'
 function ew_add_widget_support() {
     register_sidebar( array(
-                    'name' => 'Sidebar',
+                    'name' => 'Long right Sidebar',
                     'id' => 'sidebar',
                     'before_widget' => '<div class="widget">',
                     'after_widget' => '</div>',
                     'before_title' => '<h3 class="widget-title">',
                     'after_title' => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name' => 'Middle right sidebar',
+        'id' => 'mdrsidebar',
+        'before_widget' => '<div class="widget">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name' => 'Middle bottom sidebar',
+        'id' => 'mdbsidebar',
+        'before_widget' => '<div class="bottom-widget-wrapper">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name' => 'Short right sidebar',
+        'id' => 'shtrsidebar',
+        'before_widget' => '<div class="widget">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name' => 'Short bottom sidebar',
+        'id' => 'shtbsidebar',
+        'before_widget' => '<div class="bottom-widget-wrapper">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
     ) );
 }
 // Подхватывает(hook) инициацию виджета и запускает нашу функцию
@@ -45,17 +77,49 @@ function ew_register_nav_menu(){
     register_nav_menus( array(
         'header-menu' => 'header-menu',
         'footer-menu'  => 'footer-menu',
+        'aboutus-menu'  => 'aboutus-menu',
     ) );
 }
 add_action( 'after_setup_theme', 'ew_register_nav_menu', 0 );
 
+function ew_get_right_sidebar($sb_length){
+    switch ($sb_length){
+        case "long":
+            return (get_sidebar("sidebar"));
+            break;
+        case "middle":
+            return (get_sidebar("mdrsidebar"));
+            break;
+        case "short":
+            return (get_sidebar("shtrsidebar"));
+            break;
+        case "without":
+            return false;
+            break;
+    }
+}
 
+function ew_get_bottom_sidebar($sb_length){
+    switch ($sb_length){
+        case "long":
+            return false;
+            break;
+        case "middle":
+            return (get_sidebar("mdbsidebar"));
+            break;
+        case "short":
+            return (get_sidebar("shtbsidebar"));
+            break;
+        case "without":
+            return false;
+            break;
+    }
+}
 
 if ( function_exists( 'add_theme_support' ) ) add_theme_support( 'post-thumbnails' );
 
 
 
-//Возвращает массив ID записей всех опубликованных слайдов
 function ew_get_sliders(){
 
     $args = array(
@@ -70,7 +134,7 @@ function ew_get_sliders(){
         $result_query->the_post();
         $id=get_the_ID();
         $title=get_the_title();
-        $img=get_the_post_thumbnail_url( $id, "full" );;
+        $img=get_the_post_thumbnail_url( $id, "full" );
         $desc=get_field('slider_desc',$id);
         $link_url=get_field('slider_link',$id);
         $link = (!empty($link_url)) ? "<a href='$link_url'>" : false;
@@ -235,4 +299,140 @@ function ew_get_frontpage_random_gellery_img(){
       }
 
       return $outer_html;
+}
+
+function ew_get_programms_prices(){
+    $prices = array();
+    array_push($prices, get_field('prog_price_1', get_the_ID()));
+    array_push($prices, get_field('prog_price_2', get_the_ID()));
+    array_push($prices, get_field('prog_price_3', get_the_ID()));
+    $outer_html="";
+
+  for ($i=0; $i<count($prices); $i++){
+        $outer_html.= "
+            <div class='programms-prices__price  programm_price col-12 col-lg-4'>
+                <img class='programm_price_img m-auto col-auto col-md-4 col-lg-auto' src='".get_template_directory_uri()."/assets/images/prog_".$i.".svg'/>
+                <div class='programm_price_desc col-12 col-md-8 col-lg-12'>
+                    <div class='programm_price_name'>".$prices[$i]["prog_price_name"]."</div>
+                    <div class='programm_price_45min '><span class='programm_price_cost'>".$prices[$i]["prog_price_cost45"]."  ₽</span> 45 минут</div>
+                    <div class='programm_price_60min'><span class='programm_price_cost'>".$prices[$i]["prog_price_cost60"]."  ₽</span> 60 минут</div>
+                    <div class='button button_programm_price '><a href=''>Записаться</a></div>
+                </div>
+            </div>";
+    }
+
+    return $outer_html;
+}
+
+function ew_get_reviews(){
+    $outer_html="";
+    $args = array(
+        'post_type'     => 'reviews',
+        'post_status'   => 'publish',
+        'fields'        =>  'ids'
+      );
+      // The Query
+      $result_query = new WP_Query( $args );
+
+      while ( $result_query->have_posts() ) {
+        $result_query->the_post();
+        $id=get_the_ID();
+        $img=get_the_post_thumbnail();
+        $link=get_permalink($id);
+        $text=get_field('review_body',$id);
+        $date=get_field('review_date',$id);
+        $name=get_field('review_name',$id);
+
+        $outer_html.="
+            <div class='reviews__review review review_page col-12 col-lg-6 row mx-auto'>
+                <div class='review__img col-auto'>
+                    $img
+                </div>
+                <div class='review__name col-auto'>
+                    $name
+                    <div class='review__date'>$date</div>
+                </div>
+                <div class='review__quotation-mark review__quotation-mark_up d-md-block d-none col-12'></div>
+                <div class='review__text col-12'>".wp_trim_words( $text, 20, "...")."</div>
+                <div class='review__quotation-mark review__quotation-mark_down d-md-block d-none d-lg-none col-12'></div>
+                <div class='review__link-more d-flex col-12'>
+                    <div class='review__link-ico  d-block d-md-none d-lg-block'></div>
+                    <a href='$link'>Читать целиком</a>
+                </div>
+            </div>
+        ";
+
+      }
+      wp_reset_postdata();
+  
+      return $outer_html;
+
+}
+
+function ew_get_programms(){
+    $outer_html="";
+    $args = array(
+        'post_type'     => 'reviews',
+        'post_status'   => 'publish',
+        'fields'        =>  'ids'
+      );
+      // The Query
+      $result_query = new WP_Query( $args );
+
+      while ( $result_query->have_posts() ) {
+        $result_query->the_post();
+
+    }
+
+    // Restore original Post Data
+    wp_reset_postdata();
+  
+    return $outer_html;
+}
+
+function ew_get_recvizit(){
+    $id=get_the_ID();
+    $recvizit=get_field('contact_recvizit',$id);
+  
+    return $recvizit;
+}
+
+function ew_get_teachers(){
+    $outer_html="<div class='teachers col-12 row'>";
+    $after = '</div>';
+    $languages = "";
+    $args = array(
+        'post_type'     => 'teachers',
+        'post_status'   => 'publish',
+        'fields'        =>  'ids'
+      );
+      // The Query
+      $result_query = new WP_Query( $args );
+
+      while ( $result_query->have_posts() ) {
+        $result_query->the_post();
+        $id=get_the_ID();
+        $img=get_the_post_thumbnail($id, "medium");
+        $url=get_the_permalink($id);
+        $name=get_field('teacher_name',$id);
+        $exp=get_field('teacher_exp',$id);
+        $lang=get_field('teacher_lang',$id);
+        $languages = implode(", ", $lang);
+
+        $outer_html.="
+                        <div class='teacher__wrapper col-md-6'>
+                            <div class='teacher'>
+                                <a href='".$url."'>".$img."</a>
+                                <div class='teacher_name'>".$name."</div>
+                                <div class='teacher_exp'>Опыт работы: ".$exp." лет</div>
+                                <div class='teacher_lang'>Преподаватель ".$languages."</div>
+                                <a class='teacher_link' href='".$url."'>Подробнее</a>
+                            </div>
+                        </div>";
+    }
+
+    // Restore original Post Data
+    wp_reset_postdata();
+  
+    return $outer_html;
 }

@@ -12,9 +12,8 @@
                 <button class="banner-navigation__next"></button>
             </div>
         </div>       
-        <div class="sidebar px-0 px-lg-3 col-12 col-xl-3 col-md-4 order-2 order-xl-1">
             <?php get_sidebar(); ?>
-        </div>
+
         <div class="content col-12 col-md-8 col-xl-9">
             <div class="row d-lg-block d-none main-banner-xl">
                 <div class="banner owl-carousel">
