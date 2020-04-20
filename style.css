@@ -696,6 +696,39 @@ a.teacher-widget__message-link:hover {
   left: 12px;
 }
 
+/* GALLERY  */
+
+.gallery {
+  margin-top: 20px;
+}
+
+.gallery img {
+  object-fit: cover;
+  height: 540px;
+}
+
+.banner-navigation_gallery {
+  justify-content: flex-start;
+  position: inherit;
+  top: 0;
+  margin-top: 10px;
+}
+
+.gallery__md-navigation {
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+
+.banner-navigation__prev_gallery,
+.banner-navigation__next_gallery {
+  width: 40px;
+  height: 40px;
+  background-size: 10px;
+  margin: 0 15px;
+  z-index: 20;
+}
+
 /* MEDIA */
 /* /* Экстрамалые девайсы («портретные телефоны», < 576px)* */
 @media (max-width: 575.98px) {
@@ -859,6 +892,14 @@ a.teacher-widget__message-link:hover {
   #menu-aboutus {
     justify-content: center;
   }
+
+  .gallery img {
+    height: 186px;
+  }
+
+  .gallery__md-navigation {
+    top: -110px;
+  }
 }
 
 /* // Малые девайсы («ландшафтные», >= 575px) */
@@ -1017,6 +1058,13 @@ a.teacher-widget__message-link:hover {
 
   #menu-aboutus {
     justify-content: center;
+  }
+  .gallery img {
+    height: 186px;
+  }
+
+  .gallery__md-navigation {
+    top: -110px;
   }
 }
 
@@ -1195,6 +1243,14 @@ a.teacher-widget__message-link:hover {
     height: 180px;
     object-fit: cover;
   }
+
+  .gallery img {
+    height: 258px;
+  }
+
+  .gallery__md-navigation {
+    top: -140px;
+  }
 }
 
 /* // Большие девайсы (большие десктопы, >= 992px) */
@@ -1349,6 +1405,10 @@ a.teacher-widget__message-link:hover {
 
   #menu-aboutus {
     justify-content: flex-start;
+  }
+
+  .gallery img {
+    height: 400px;
   }
 }
 

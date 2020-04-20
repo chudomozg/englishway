@@ -73,5 +73,24 @@
     $(".frontpage-gallery__tablet-next").click(function () {
       $(".frontpage-gallery__slider").trigger("next.owl.carousel");
     });
+
+    //Страница Галерея
+    slidersIds.forEach(function (id) {
+      galleryName = ".gallery-" + id;
+      gallery = $(galleryName + " .gallery__box");
+      gallery.owlCarousel({
+        loop: true,
+        items: 1,
+        autoWidth: false,
+        nav: false,
+        dotsContainer: galleryName + " .banner-navigation__dots"
+      });
+      $(galleryName + " .banner-navigation__prev").click(function () {
+        $(".gallery-" + id + " .gallery__box").trigger("prev.owl.carousel");
+      });
+      $(galleryName + " .banner-navigation__next").click(function () {
+        $(".gallery-" + id + " .gallery__box").trigger("next.owl.carousel");
+      });
+    });
   });
 })(jQuery);

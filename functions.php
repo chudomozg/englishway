@@ -23,6 +23,7 @@ function ew_add_js(){
     wp_enqueue_script( 'vk-widget', "https://vk.com/js/api/openapi.js?167");
     wp_enqueue_script( 'ew-mobile-menu', get_template_directory_uri()."/assets/js/menu.js");
     wp_enqueue_script( 'ew-slider', get_template_directory_uri()."/assets/js/slider.js");
+    wp_localize_script('ew-slider', 'slidersIds', ew_get_galleries_id());
 }
 add_action( 'wp_enqueue_scripts', 'ew_add_js' );
 
@@ -427,6 +428,67 @@ function ew_get_teachers(){
                                 <div class='teacher_exp'>Опыт работы: ".$exp." лет</div>
                                 <div class='teacher_lang'>Преподаватель ".$languages."</div>
                                 <a class='teacher_link' href='".$url."'>Подробнее</a>
+                            </div>
+                        </div>";
+    }
+
+    // Restore original Post Data
+    wp_reset_postdata();
+  
+    return $outer_html;
+}
+
+
+function ew_get_galleries_id(){
+    $args = array(
+        'post_type'     => 'gallery',
+        'post_status'   => 'publish',
+        'fields'        =>  'ids'
+      );
+    // The Query
+    $result_query = new WP_Query( $args );
+    $ID_array = $result_query->posts;
+
+    // Restore original Post Data
+    wp_reset_postdata();
+
+    return $ID_array;
+}
+
+function ew_get_galleries(){
+    $outer_html="";
+    $gallery_thml="";
+    $args = array(
+        'post_type'     => 'gallery',
+        'post_status'   => 'publish',
+        'fields'        =>  'ids'
+      );
+      // The Query
+      $result_query = new WP_Query( $args );
+
+      while ( $result_query->have_posts() ) {
+        $result_query->the_post();
+        $title=get_the_title();
+        $id=get_the_ID();
+        $gallery =  explode(",",get_field('gallery_images',$id)); 
+        $outer_html.='  <div class="col-12 gallery gallery-'.$id.'">
+                            <div class="gallery__title contetnt-block__title col-12">
+                                <h3>'.$title.'</h3>
+                                <div class="contetnt-block__title-delimiter"></div>
+                            </div>';
+        $outer_html.="      <div class='gallery__box owl-carousel'>";
+        foreach ($gallery as $img){
+            $outer_html.=wp_get_attachment_image($img,"full");
+        }
+            $outer_html.="  </div>
+                            <div class='banner-navigation banner-navigation_gallery d-none d-lg-flex'>
+                                <button class='banner-navigation__prev'></button>
+                                <div class='banner-navigation__dots'></div>
+                                <button class='banner-navigation__next'></button>
+                            </div>
+                            <div class='gallery__md-navigation d-flex d-lg-none'>
+                                <button class='banner-navigation__prev banner-navigation__prev_gallery'></button>
+                                <button class='banner-navigation__next banner-navigation__next_gallery'></button>
                             </div>
                         </div>";
     }
