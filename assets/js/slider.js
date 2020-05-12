@@ -19,6 +19,7 @@
       bannerXl.trigger("next.owl.carousel");
     });
 
+    //Отзывы на главной
     $(".frontpage-review__slider").owlCarousel({
       loop: true,
       responsive: {
@@ -32,7 +33,7 @@
           items: 3
         }
       },
-      margin: 30
+      margin: 0
     });
     $(".frontpage-review__slider").append("<div class='frontpage-review__more-link slider-more-link'><a href='/review'>Смотреть все отзывы</a></div>");
 
@@ -90,6 +91,15 @@
       });
       $(galleryName + " .banner-navigation__next").click(function () {
         $(".gallery-" + id + " .gallery__box").trigger("next.owl.carousel");
+      });
+
+      //Magnific popup
+      $(".popup-gallery-" + id).magnificPopup({
+        type: "image",
+        gallery: {
+          enabled: true,
+          tCounter: ""
+        }
       });
     });
   });

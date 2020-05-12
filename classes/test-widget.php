@@ -29,12 +29,18 @@ class ew_test_Widget extends WP_Widget {
     extract( $args );
 
     $before_widget ="<div class='clear-widget-wrapper ".$instance['classes']."'>
-                      <div class='widget widget__test-widget test-widget'>
+                      <div class='widget mb-0 widget__test-widget test-widget'>
                         <div class='test-widget__wrapper row d-flex justify-content-center m-0 h-100'>
     ";
-    $ico=  "<div class='test-widget__ico'><img src='".get_template_directory_uri()."/assets/images/ico_test_widget_skype.svg'></div> ";
+    $ico=  "<div class='test-widget__ico w-100'><img class='d-block mx-auto' src='".get_template_directory_uri()."/assets/images/ico_test_widget_skype.svg'></div> ";
     $message    = "<div class='test-widget__message col-10 text-center'>".$instance['message']."</div>";
-    $button = "<div class='test-widget__button button button_red col-9 p-0 w-100 primary-deep'><a href='/test' class=' '>Начать</a></div>";
+    $button = "
+              <div class='col-9 p-0 w-100'>
+                <div class='test-widget__button button button_red primary-deep'>
+                  <a href='/test' class='test-widget__button-text'><div class=''>Начать</div></a>
+                </div>
+              </div>
+              ";
     $after_widget ="</div></div></div>";  
        
     echo $before_widget;       

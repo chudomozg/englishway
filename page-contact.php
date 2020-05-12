@@ -3,8 +3,8 @@
     <section class="main container-lg container-fluid">
     <div class="row">
         <?php ew_get_right_sidebar(get_field('content_length',get_the_ID())); ?>
-        <div class="content col-12 col-md-8 col-xl-9 pb-xl-3">
-            <div class="contetnt-block main-content row">
+        <div class="content col-12 col-md-8 col-xl-9 pb-lg-3">
+            <div class="contetnt-block main-content contetnt-block_md-bottom-delimiter row">
               <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 <h2 class="main-title"><?php the_title(); ?></h2>
                 <?php wp_nav_menu( array( 'theme_location' => 'aboutus-menu' ) ); ?> 
@@ -15,7 +15,9 @@
                 <div class="contact-desc col-12 row ">      
                   <div class="contact-desc__call col-lg-5 order-lg-2">
                     <div class="contact-desc__phone">
-                      <?php echo get_field('contact_phone', get_the_ID()); ?>
+                      <a href="tel:+7 (3812) 505-543">
+                        <?php echo get_field('contact_phone', get_the_ID()); ?>
+                      </a>
                     </div>
                     <div class="contact-desc__schedule">
                       <?php echo get_field('contact_schedule', get_the_ID()); ?>

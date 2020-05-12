@@ -1,6 +1,7 @@
 <?php
 require get_template_directory() . '/classes/test-widget.php';
 require get_template_directory() . '/classes/teacher-widget.php';
+require get_template_directory() . '/classes/price-widget.php';
 
 //стили и шрифты
 function ew_add_css(){
@@ -8,6 +9,8 @@ function ew_add_css(){
     wp_enqueue_style( 'footer-css', get_template_directory_uri()."/assets/css/footer.css");
     wp_enqueue_style( 'bootstrap', get_template_directory_uri()."/assets/css/bootstrap.min.css");
     wp_enqueue_style( 'owl-carousel', get_template_directory_uri()."/assets/css/owl.carousel.min.css");
+    wp_enqueue_style( 'owl-carousel', get_template_directory_uri()."/assets/css/owl.carousel.min.css");
+    wp_enqueue_style( 'magnific-popup', get_template_directory_uri()."/assets/css/magnific-popup.css");
     wp_enqueue_style( 'normalize-styles', "https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css");
     wp_enqueue_style( 'google-open-sans', "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap&subset=cyrillic,cyrillic-ext");
     wp_enqueue_style( 'google-istok-web', "https://fonts.googleapis.com/css?family=Istok+Web:400,700&display=swap&subset=cyrillic,cyrillic-ext");
@@ -20,22 +23,25 @@ function ew_add_js(){
     wp_enqueue_script( 'owl-carousel', get_template_directory_uri()."/assets/js/owl.carousel.min.js");
     wp_enqueue_script( 'bootstrap-js', get_template_directory_uri()."/assets/js/bootstrap.min.js");
     wp_enqueue_script( 'dif-accordion', get_template_directory_uri()."/assets/js/differences_accordion.js");
+    wp_enqueue_script( 'magnific-popup', get_template_directory_uri()."/assets/js/jquery.magnific-popup.min.js", array('jquery'));
     wp_enqueue_script( 'vk-widget', "https://vk.com/js/api/openapi.js?167");
     wp_enqueue_script( 'ew-mobile-menu', get_template_directory_uri()."/assets/js/menu.js");
     wp_enqueue_script( 'ew-slider', get_template_directory_uri()."/assets/js/slider.js");
     wp_localize_script('ew-slider', 'slidersIds', ew_get_galleries_id());
+    wp_enqueue_script( 'input-mask', get_template_directory_uri()."/assets/js/jquery.inputmask.min.js", array('jquery'));
+    wp_enqueue_script( 'input-mask-rules', get_template_directory_uri()."/assets/js/imask_rules.js", array('jquery', 'input-mask'));
 }
 add_action( 'wp_enqueue_scripts', 'ew_add_js' );
 
 // Регистрирует новую боковую панель под названием 'sidebar'
 function ew_add_widget_support() {
     register_sidebar( array(
-                    'name' => 'Long right Sidebar',
-                    'id' => 'sidebar',
-                    'before_widget' => '<div class="widget">',
-                    'after_widget' => '</div>',
-                    'before_title' => '<h3 class="widget-title">',
-                    'after_title' => '</h3>',
+        'name' => 'Long right Sidebar',
+        'id' => 'sidebar',
+        'before_widget' => '<div class="widget">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
     ) );
     register_sidebar( array(
         'name' => 'Middle right sidebar',
@@ -69,6 +75,14 @@ function ew_add_widget_support() {
         'before_title' => '<h3 class="widget-title">',
         'after_title' => '</h3>',
     ) );
+    register_sidebar( array(
+        'name' => 'Price bottom sidebar',
+        'id' => 'price_sidebar',
+        'before_widget' => '<div class="bottom-widget-wrapper">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
 }
 // Подхватывает(hook) инициацию виджета и запускает нашу функцию
 add_action( 'widgets_init', 'ew_add_widget_support' );
@@ -79,6 +93,8 @@ function ew_register_nav_menu(){
         'header-menu' => 'header-menu',
         'footer-menu'  => 'footer-menu',
         'aboutus-menu'  => 'aboutus-menu',
+        'review-menu'  => 'review-menu',
+        'lang-menu'  => 'lang-menu',
     ) );
 }
 add_action( 'after_setup_theme', 'ew_register_nav_menu', 0 );
@@ -345,7 +361,7 @@ function ew_get_reviews(){
         $name=get_field('review_name',$id);
 
         $outer_html.="
-            <div class='reviews__review review review_page col-12 col-lg-6 row mx-auto'>
+            <div class='reviews__review review review_page col-12 col-lg-6 row mx-auto mx-lg-0'>
                 <div class='review__img col-auto'>
                     $img
                 </div>
@@ -471,14 +487,16 @@ function ew_get_galleries(){
         $title=get_the_title();
         $id=get_the_ID();
         $gallery =  explode(",",get_field('gallery_images',$id)); 
-        $outer_html.='  <div class="col-12 gallery gallery-'.$id.'">
+        $outer_html.='  <div class="col-12 px-0 px-md-0 gallery gallery-'.$id.'">
                             <div class="gallery__title contetnt-block__title col-12">
                                 <h3>'.$title.'</h3>
                                 <div class="contetnt-block__title-delimiter"></div>
                             </div>';
         $outer_html.="      <div class='gallery__box owl-carousel'>";
         foreach ($gallery as $img){
+            $outer_html.="<a class='popup-gallery-".$id."' href='".wp_get_attachment_image_url( $img, "full" )."'>";
             $outer_html.=wp_get_attachment_image($img,"full");
+            $outer_html.="</a>";
         }
             $outer_html.="  </div>
                             <div class='banner-navigation banner-navigation_gallery d-none d-lg-flex'>
@@ -498,3 +516,56 @@ function ew_get_galleries(){
   
     return $outer_html;
 }
+
+
+add_filter('cf7_2_post_filter-reviews-title','filter_reviews_title',10,3);
+function filter_reviews_title($value, $post_id, $form_data){
+  //$value is the post field value to return, by default it is empty. If you are filtering a taxonomy you can return either slug/id/array.  in case of ids make sure to cast them integers.(see https://codex.wordpress.org/Function_Reference/wp_set_object_terms for more information.)
+  //$post_id is the ID of the post to which the form values are being mapped to
+  // $form_data is the submitted form data as an array of field-name=>value pairs
+
+//   return $value;
+  return $post_id;
+}
+
+add_filter('cf7_2_post_filter-reviews-review_date','filter_reviews_review_date',10,3);
+function filter_reviews_review_date($value, $post_id, $form_data){
+  //$value is the post field value to return, by default it is empty. If you are filtering a taxonomy you can return either slug/id/array.  in case of ids make sure to cast them integers.(see https://codex.wordpress.org/Function_Reference/wp_set_object_terms for more information.)
+  //$post_id is the ID of the post to which the form values are being mapped to
+  // $form_data is the submitted form data as an array of field-name=>value pairs
+  $value=date('Ymd');
+  return $value;
+}
+
+add_filter('wpcf7_form_elements', function($content) {
+    $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
+    return $content;
+    });
+
+    add_action( 'admin_print_styles-toplevel_page_wpcf7', function () {
+
+        if ( empty( $_GET['post'] ) ) {
+            return;
+        }
+    
+        // Подключаем редактор кода для HTML.
+        $settings = wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
+    
+        // Ничего не делаем, если CodeMirror отключен.
+        if ( false === $settings ) {
+            return;
+        }
+    
+        // Инициализация редактора для редактирования шаблона формы
+        wp_add_inline_script(
+            'code-editor',
+            sprintf( 'jQuery( function() { wp.codeEditor.initialize( "wpcf7-form", %s ); } );', wp_json_encode( $settings ) )
+        );
+    
+        // Инициализация редактора для редактирования шаблона письма
+        wp_add_inline_script(
+            'code-editor',
+            sprintf( 'jQuery( function() { wp.codeEditor.initialize( "wpcf7-mail-body", %s ); } );', wp_json_encode( $settings ) )
+        );
+    
+    } );

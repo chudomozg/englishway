@@ -34,9 +34,12 @@ input[type="submit"] {
 
 input[type="text"],
 input[type="tel"],
-input[type="email"] {
+input[type="email"],
+textarea {
   background-color: #e5e5e5;
   border: none;
+  color: #333333;
+  padding: 3px 10px;
 }
 
 .button {
@@ -46,8 +49,11 @@ input[type="email"] {
   -webkit-box-shadow: 8px 8px 8px 0px rgba(227, 11, 19, 0.25);
   -moz-box-shadow: 8px 8px 8px 0px rgba(227, 11, 19, 0.25);
   box-shadow: 8px 8px 8px 0px rgba(227, 11, 19, 0.25);
-  padding: 8px;
   border: none;
+}
+
+.button_input {
+  padding: 8px;
 }
 
 .button_red {
@@ -59,6 +65,12 @@ input[type="email"] {
 .button a:visited {
   text-decoration: none !important;
   color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 8px;
 }
 
 main {
@@ -183,11 +195,6 @@ main {
   margin-bottom: 20px;
 }
 
-.test-widget {
-  background: url("./assets/images/test_widget_bg.png") no-repeat;
-  background-size: cover;
-}
-
 .test-widget__wrapper {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 0 0 24px 0;
@@ -252,6 +259,9 @@ main {
 
 /* Изучайте онлайн widget */
 .test-widget {
+  background: url("./assets/images/test_widget_bg.png") no-repeat;
+  background-size: cover;
+  border: none;
   padding: 0 !important;
 }
 
@@ -300,7 +310,10 @@ main {
   margin-bottom: 5px;
 }
 
-.ew-online-test-widget__link {
+.ew-online-test-widget__link,
+.ew-online-test-widget__link:hover,
+.ew-online-test-widget__link:visited {
+  color: #000;
   text-decoration: underline !important;
 }
 
@@ -310,7 +323,7 @@ main {
   height: 24px;
   background: url("./assets/images/list-style-img.svg") no-repeat;
   position: absolute;
-  left: 30px;
+  left: 15px;
 }
 
 /* trial lesson widget  */
@@ -339,6 +352,7 @@ main {
 .trial-lesson input.trial-lesson__button {
   margin-bottom: 0;
   padding: 8px 0;
+  margin-top: 25px;
 }
 
 .trial-lesson p {
@@ -575,13 +589,12 @@ a.teacher-widget__message-link:hover {
 }
 
 .programm_price {
-  display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .programm_price_name {
   font-weight: bold;
-  margin: 15px auto 30px;
+  margin: 15px auto 10px;
   text-align: center;
 }
 
@@ -603,6 +616,7 @@ a.teacher-widget__message-link:hover {
   -webkit-box-shadow: 0px 4px 4px 0px rgba(43, 40, 115, 0.25);
   -moz-box-shadow: 0px 4px 4px 0px rgba(43, 40, 115, 0.25);
   box-shadow: 0px 4px 4px 0px rgba(43, 40, 115, 0.25);
+  height: 36px;
 }
 
 .button_programm_price a,
@@ -619,23 +633,43 @@ a.teacher-widget__message-link:hover {
   height: 105px;
 }
 
-#menu-aboutus {
+.contact-desc__phone a,
+.contact-desc__phone a:hover,
+.contact-desc__phone a:visited {
+  color: #000;
+  text-decoration: none;
+}
+
+#menu-aboutus,
+#menu-review,
+#menu-language {
   display: flex;
   list-style: none;
   padding-left: 0;
+  margin-bottom: 2em;
 }
 
-.menu-aboutus-container {
+.menu-aboutus-container,
+.menu-language-container,
+.menu-review-container {
   width: 100%;
 }
 
 #menu-aboutus li a,
 #menu-aboutus li a:hover,
-#menu-aboutus li a:visited {
+#menu-aboutus li a:visited,
+#menu-review li a,
+#menu-review li a:hover,
+#menu-review li a:visited,
+#menu-language li a,
+#menu-language li a:hover,
+#menu-language li a:visited {
   color: #333333;
 }
 
-#menu-aboutus li {
+#menu-aboutus li,
+#menu-review li,
+#menu-language li {
   margin-right: 30px;
   text-transform: uppercase;
   font-size: 12px;
@@ -643,14 +677,22 @@ a.teacher-widget__message-link:hover {
   padding-bottom: 3px;
 }
 
-#menu-aboutus .current_page_item {
+#menu-aboutus .current_page_item,
+#menu-language .current-menu-item,
+#menu-review .current_page_item {
   color: #2b2873;
-  border-bottom: 1px solid #2b2873;
+  border-bottom: 1px solid #88888b;
 }
 
 #menu-aboutus .current_page_item a,
 #menu-aboutus .current_page_item a:hover,
-#menu-aboutus .current_page_item a:visited {
+#menu-aboutus .current_page_item a:visited,
+#menu-review .current_page_item a,
+#menu-review .current_page_item a:hover,
+#menu-review .current_page_item a:visited,
+#menu-language .current-menu-item a,
+#menu-language .current-menu-item a:hover,
+#menu-language .current-menu-item a:visited {
   color: #2b2873;
 }
 
@@ -727,6 +769,246 @@ a.teacher-widget__message-link:hover {
   background-size: 10px;
   margin: 0 15px;
   z-index: 20;
+}
+
+/* PROGRAM PRICE  */
+
+.program__header {
+  display: flex;
+  flex-wrap: nowrap;
+  background: #f2f2f2;
+  padding: 10px;
+}
+
+.program__desc {
+  border-top: 1px solid #b2b2b2;
+}
+
+.programm_price_desc {
+  display: flex;
+  /* justify-content: space-between; */
+  align-content: space-between;
+}
+
+.program {
+  margin-bottom: 40px;
+}
+
+.program__link-arrow {
+  width: 24px;
+  height: 24px;
+  background: url(./assets/images/list-style-img.svg) no-repeat;
+  margin-right: 12px;
+}
+
+.program__ico {
+  margin-right: 15px;
+}
+
+.program__ico img {
+  height: 40px;
+  width: auto;
+}
+
+.program-title {
+  display: flex;
+  align-self: center;
+  font-weight: bold;
+}
+
+.program-text {
+  background: #f2f2f2;
+  padding: 15px 10px;
+}
+
+.program__link {
+  background: #ebebf8;
+  color: #808080;
+  padding: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.program__link a,
+.program__link a:hover,
+.program__link a:visited {
+  color: #808080;
+  text-decoration: underline;
+}
+
+/* REVIEW FORM  */
+.review_form-content textarea {
+  height: 170px;
+}
+
+/* TEACHER PAGE  */
+
+.teacher-photo img {
+  object-fit: cover;
+  height: 200px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.teacher-lang {
+  margin: 20px 0;
+}
+
+.teacher-exp {
+  color: #e30b13;
+  margin-bottom: 10px;
+}
+
+.teacher-text {
+  margin-top: 20px;
+}
+
+/* REVIEW PAGE  */
+.review-page-photo img {
+  object-fit: cover;
+  height: 80px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.review-page-detail {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+}
+
+.review-page-text {
+  margin-top: 20px;
+}
+
+/* MODAL CALLBACK  */
+.callback__title {
+  text-align: center;
+  width: 100%;
+}
+
+.callback form {
+  text-align: center;
+}
+
+.callback p {
+  margin-bottom: 0;
+}
+
+/* TEST PAGE  */
+
+.test-online-page__flag img {
+  width: 110px;
+}
+
+.test-online-page__test {
+  align-content: center;
+  text-align: center;
+}
+
+.test-online-page__button {
+  margin-top: 30px;
+}
+
+.test-online-page__name {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 30px auto 20px;
+}
+
+.test-online-page {
+  margin-bottom: 80px;
+  justify-content: space-around;
+}
+
+.test-real__desc {
+  text-align: center;
+}
+
+.page-test .ew-online-test-widget-wrapper {
+  display: none;
+}
+
+.test-online__md-text {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* /WIDGETS  */
+.test-widget_bottom .test-widget__ico img {
+  width: 110px;
+  margin-top: 30px;
+}
+
+.test-widget_mdbottom .test-widget__ico img {
+  width: 130px;
+  margin-top: 60px;
+}
+
+.test-widget_mdbottom .test-widget__message {
+  margin-bottom: 50px;
+}
+
+.test-widget_mdbottom .test-widget__button {
+  min-height: 30px;
+}
+
+/* STICKY SIDEBAR  */
+.primary-sidebar {
+  position: sticky;
+  top: 0;
+}
+
+.programms-prices-delimiter {
+  height: 1px;
+  width: 80%;
+  border-bottom: 1px solid #b3b3b3;
+  margin: 0 auto 40px auto;
+}
+
+.teacher-widget_bottom .widget {
+  align-content: space-evenly;
+}
+
+.review-form__img-wrapper {
+  margin: 20px 0;
+}
+
+.review-form p {
+  margin-bottom: 0;
+}
+
+.review-form__name input,
+.review-form__email input {
+  width: 100%;
+}
+
+.review-form__img-wrapper input {
+  left: 56px;
+  position: relative;
+}
+
+.review-form__img-label {
+  background-color: #2b2873;
+  color: #fff;
+  padding: 5px 35px;
+  left: 16px;
+  top: -5px;
+  position: absolute;
+}
+
+.review-form__content textarea {
+  height: 150px;
+}
+
+.review-form__button {
+  margin: 20px 0;
+}
+.review-form__button input {
+  padding: 10px 35px;
 }
 
 /* MEDIA */
@@ -862,8 +1144,8 @@ a.teacher-widget__message-link:hover {
   }
 
   .main-title {
-    font-size: 26px;
-    font-weight: 600;
+    font-size: 28px;
+    font-weight: 800;
     text-align: center;
   }
 
@@ -899,6 +1181,99 @@ a.teacher-widget__message-link:hover {
 
   .gallery__md-navigation {
     top: -110px;
+  }
+
+  .program__header {
+    cursor: pointer;
+  }
+
+  .program {
+    margin-bottom: 10px;
+  }
+
+  .teacher-photo img {
+    height: 250px;
+    border-radius: 0;
+  }
+
+  .review-page-photo img {
+    height: 300px;
+  }
+
+  .test-online-page__flag img {
+    width: 160px;
+  }
+
+  .test-online-page__name {
+    margin: 15px auto 5px;
+  }
+
+  .test-online-page__button {
+    margin-top: 20px;
+  }
+
+  .test-online-page__test {
+    margin-bottom: 50px;
+  }
+
+  .test-online-page {
+    margin-bottom: 10px;
+  }
+
+  .test-widget_bottom {
+    min-height: 250px;
+  }
+
+  .test-widget_mdbottom .test-widget__ico img {
+    width: 120px;
+    margin-top: 30px;
+  }
+
+  .test-widget_mdbottom .test-widget__message {
+    margin-bottom: 10px;
+  }
+
+  #menu-aboutus,
+  #menu-review,
+  #menu-language {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #menu-aboutus li,
+  #menu-review li,
+  #menu-language li {
+    margin-top: 12px;
+    margin-right: 15px;
+  }
+
+  .programms-prices__price {
+    margin-bottom: 40px;
+  }
+
+  .main-content_gallery {
+    padding: 35px 0 20px 0;
+  }
+
+  .test-online__title {
+    font-size: 21px;
+  }
+
+  .review-form__name input,
+  .review-form__email input {
+    width: 100%;
+  }
+
+  .review-form__content textarea {
+    height: 100px;
+  }
+
+  .review-form__button button {
+    margin: auto;
+  }
+
+  .review-desc {
+    text-align: center;
   }
 }
 
@@ -1025,8 +1400,8 @@ a.teacher-widget__message-link:hover {
   }
 
   .main-title {
-    font-size: 26px;
-    font-weight: 600;
+    font-size: 28px;
+    font-weight: 800;
     text-align: center;
   }
 
@@ -1066,6 +1441,94 @@ a.teacher-widget__message-link:hover {
   .gallery__md-navigation {
     top: -110px;
   }
+
+  .program__header {
+    cursor: pointer;
+  }
+
+  .program {
+    margin-bottom: 10px;
+  }
+
+  .teacher-photo img {
+    height: 350px;
+    border-radius: 0;
+  }
+
+  .review-page-photo img {
+    height: 300px;
+  }
+
+  .test-online-page__flag img {
+    width: 160px;
+  }
+
+  .test-online-page__name {
+    margin: 15px auto 5px;
+  }
+
+  .test-online-page__button {
+    margin-top: 20px;
+  }
+
+  .test-online-page__test {
+    margin-bottom: 50px;
+  }
+
+  .test-online-page {
+    margin-bottom: 10px;
+  }
+
+  .test-widget_bottom {
+    min-height: 250px;
+  }
+
+  .test-widget_mdbottom .test-widget__ico img {
+    width: 120px;
+    margin-top: 30px;
+  }
+
+  .test-widget_mdbottom .test-widget__message {
+    margin-bottom: 10px;
+  }
+
+  #menu-aboutus,
+  #menu-review,
+  #menu-language {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #menu-aboutus li,
+  #menu-review li,
+  #menu-language li {
+    margin-top: 12px;
+  }
+
+  .programms-prices__price {
+    margin-bottom: 40px;
+  }
+
+  .test-online__title {
+    font-size: 21px;
+  }
+
+  .review-form__name input,
+  .review-form__email input {
+    width: 100%;
+  }
+
+  .review-form__content textarea {
+    height: 100px;
+  }
+
+  .review-form__button button {
+    margin: auto;
+  }
+
+  .review-desc {
+    text-align: center;
+  }
 }
 
 /* // Средние девайсы («таблетки», >= 768px) */
@@ -1084,7 +1547,7 @@ a.teacher-widget__message-link:hover {
     font-size: 20px !important;
   }
 
-  .contetnt-block {
+  .contetnt-block_md-bottom-delimiter {
     border-bottom: 1px solid #b2b2b2;
   }
 
@@ -1183,6 +1646,7 @@ a.teacher-widget__message-link:hover {
   .widget {
     border-radius: 0;
     margin-bottom: -1px;
+    border-right: none;
   }
 
   .ew-online-test-widget__link::before {
@@ -1204,6 +1668,7 @@ a.teacher-widget__message-link:hover {
 
   .programm_price {
     flex-flow: wrap;
+    margin-bottom: 80px;
   }
 
   .main-title {
@@ -1250,6 +1715,167 @@ a.teacher-widget__message-link:hover {
 
   .gallery__md-navigation {
     top: -140px;
+  }
+
+  .program__header {
+    cursor: pointer;
+  }
+
+  .program {
+    margin-bottom: 10px;
+  }
+
+  .teacher-photo img {
+    height: 250px;
+    border-radius: 0;
+  }
+
+  .review-page-photo img {
+    height: 120px;
+  }
+
+  .test-online-page__flag img {
+    width: 130px;
+  }
+
+  .test-online-page__name {
+    margin: 0 auto;
+  }
+
+  .test-online-page__button {
+    margin-top: 10px;
+  }
+
+  .test-online-page__test {
+    margin-bottom: 50px;
+  }
+
+  .test-online-page__button {
+    width: 75% !important;
+  }
+
+  .test-online-page {
+    margin-bottom: 20px;
+  }
+
+  .ew-instagram-widget_bottom .widget {
+    padding-bottom: 20px;
+  }
+
+  .test-widget_bottom {
+    min-height: 250px;
+  }
+
+  .test-widget_mdbottom .test-widget__ico img {
+    width: 120px;
+    margin-top: 30px;
+  }
+
+  .test-widget_mdbottom .test-widget__message {
+    margin-bottom: 20px;
+  }
+
+  #menu-aboutus,
+  #menu-review,
+  #menu-language {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #menu-aboutus li,
+  #menu-review li,
+  #menu-language li {
+    margin-top: 12px;
+  }
+
+  .programms-prices__title {
+    margin: 30px auto;
+  }
+
+  .programm_price_name {
+    margin: 0 auto 5px;
+    text-align: left;
+  }
+
+  .programms-prices {
+    padding: 0 20px 20px;
+  }
+
+  .programm_price_cost {
+    font-size: 21px;
+    margin-right: 15px;
+  }
+
+  .trial-lesson-wrapper {
+    border-top: none;
+  }
+
+  .teacher-widget {
+    padding-bottom: 0;
+  }
+
+  .home .clear-widget-wrapper {
+    display: none;
+  }
+
+  .test-widget_frontpage-bottom {
+    height: 210px;
+  }
+
+  .test-widget_frontpage-bottom .widget {
+    height: 100%;
+    border: none;
+  }
+
+  .test-widget_frontpage-bottom .test-widget__ico {
+    margin-top: 20px;
+  }
+
+  .contetnt-block_md-bottom-delimiter {
+    border-bottom: 1px solid #b2b2b2;
+  }
+
+  .recvizit {
+    padding: 25px 50px;
+  }
+
+  .teacher-widget_bottom .teacher-widget__link img {
+    height: 160px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .teacher-widget_bottom .teacher-widget__link {
+    padding: 0px 15px !important;
+  }
+
+  .teacher-widget_bottom .teacher-widget__links {
+    justify-content: space-between;
+  }
+
+  .form-reviw-block {
+    padding: 25px 50px;
+  }
+
+  .review-form__name input,
+  .review-form__email input {
+    width: 100%;
+  }
+
+  .review-form__content textarea {
+    height: 100px;
+  }
+
+  .review-form__button button {
+    margin: auto;
+  }
+
+  .review-desc {
+    text-align: center;
+  }
+
+  .primary-sidebar .teacher-widget__wrapper {
+    border-bottom: none;
   }
 }
 
@@ -1329,7 +1955,7 @@ a.teacher-widget__message-link:hover {
   }
 
   .programm_price {
-    flex-flow: column;
+    /* flex-flow: column; */
     max-width: 170px;
   }
 
@@ -1409,6 +2035,25 @@ a.teacher-widget__message-link:hover {
 
   .gallery img {
     height: 400px;
+  }
+
+  .bottom-sidebar .widget,
+  .bottom-sidebar .widget-text {
+    height: 100%;
+  }
+
+  .diff__title {
+    cursor: default;
+  }
+
+  .teacher-widget_bottom .teacher-widget__link img {
+    height: 110px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .teacher-widget_bottom .widget {
+    padding-top: 96px;
   }
 }
 
@@ -1496,10 +2141,6 @@ a.teacher-widget__message-link:hover {
     padding-top: 96px;
   }
 
-  .programm_price {
-    flex-flow: column;
-  }
-
   .main-title {
     font-size: 40px;
     font-weight: bold;
@@ -1567,5 +2208,9 @@ a.teacher-widget__message-link:hover {
 
   #menu-aboutus {
     justify-content: flex-start;
+  }
+
+  .diff__title {
+    cursor: default;
   }
 }

@@ -32,7 +32,7 @@ class ew_teacher_Widget extends WP_Widget {
     while ( $result_query->have_posts() ) {
         $result_query->the_post();
         $id=get_the_ID();
-        $img=get_the_post_thumbnail_url($id, "thumbnail");
+        $img=get_the_post_thumbnail_url($id, "medium");
         $link=get_permalink($id);
 
         array_push($teachers, [

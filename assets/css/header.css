@@ -90,6 +90,11 @@
   font-size: 12px;
 }
 
+.hphone__recall:hover {
+  transition: 1s;
+  background-color: #f7f7fc;
+}
+
 .hphone__recall_wrapper {
   margin: 8px 0 0 0;
 }
@@ -166,7 +171,7 @@
 
 .phone_button__img {
   position: relative;
-  top: 1px;
+  top: -6px;
   left: 1px;
 }
 
@@ -257,6 +262,8 @@
 
   .header__logo {
     text-align: center;
+    width: fit-content;
+    margin: auto;
   }
 
   .header__logoimg {

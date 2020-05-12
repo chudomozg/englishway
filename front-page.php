@@ -25,16 +25,16 @@
                     <button class="banner-navigation__next"></button>
                 </div>
             </div>
-            <div class="differences differences-accordion contetnt-block row ">
+            <div class="differences differences-accordion contetnt-block contetnt-block_md-bottom-delimiter row ">
                 <div class="differences__title contetnt-block__title col-12">
                     <h3>Наши отличия</h3>
                     <div class="contetnt-block__title-delimiter"></div>
                 </div>
                 <?php echo (ew_get_differences()) ?>  
             </div>
-            <div class="you-can contetnt-block row ">
+            <div class="you-can contetnt-block contetnt-block_md-bottom-delimiter row ">
             <div class="you-can__title contetnt-block__title col-12">
-                    <h3>Обучаясь в школе Hello вы сможете:</h3>
+                    <h3>Обучаясь в школе EnglishWay вы сможете:</h3>
                     <div class="contetnt-block__title-delimiter"></div>
                 </div>
                 <?php echo (ew_get_you_can()) ?>  
@@ -44,7 +44,7 @@
                     <h3>Отзывы</h3>
                     <div class="contetnt-block__title-delimiter"></div>
                 </div>
-                <div class="frontpage-review__slider reviews col-md-10 col-lg-12 mx-md-auto mx-lg-0 owl-carousel">
+                <div class="frontpage-review__slider reviews px-0 px-md-3 col-md-10 col-lg-12 mx-md-auto mx-lg-0 owl-carousel">
                     <?php echo (ew_get_frontpage_review()) ?>  
                 </div>
                 <div class="frontpage-review__nav d-md-flex d-lg-none d-none">
@@ -61,7 +61,7 @@
                     <div class="frontpage-gallery__slider px-0 px-md-3  px-lg-0 col-12 col-md-10 col-lg-12 mx-md-auto owl-carousel">
                         <?php echo (ew_get_frontpage_random_gellery_img()) ?>
                     </div>
-                    <div class="frontpage-gallery__slider-navigation slider-navigation row px-3 mx-n3 px-lg-0 mx-lg-0">
+                    <div class="frontpage-gallery__slider-navigation slider-navigation row px-0 mx-0 px-md-3 mx-md-n3 px-lg-0 mx-lg-0">
                         <button class="slider-navigation__prev d-md-none d-lg-block"></button>
                         <div class="slider-navigation__dots d-md-none d-lg-block"></div>
                         <button class="slider-navigation__next d-md-none d-lg-block"></button>
@@ -72,6 +72,11 @@
                         <div class="frontpage-gallery__tablet-next"></div>
                     </div>
                 </div>
+            </div>
+            <div class="content-block row">
+                <?php the_widget( "ew_test_Widget", array(
+                    "message" => "Изучайте язык онлайн!",
+                    "classes" => "test-widget_frontpage-bottom col-12 px-0 d-none d-md-block d-lg-none"));?>
             </div>
         </div>
     </div>

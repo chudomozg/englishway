@@ -20,7 +20,9 @@
                     <span></span>
                 </div>
                 <div class="header__phone_button phone_button">
-                    <img class="phone_button__img" src="<?php echo get_template_directory_uri(); ?>/assets/images/mdi_call.svg" alt="">
+                    <a class="hphone__link" href="tel:+7 (3812) 505-543">
+                        <img class="phone_button__img" src="<?php echo get_template_directory_uri(); ?>/assets/images/mdi_call.svg" alt="">
+                    </a>
                 </div>
                 <a class="header__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
                     <img class="header__logoimg" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="logo">
@@ -47,11 +49,28 @@
                         <a class="hphone__link" href="tel:+7 (3812) 505-543">+7 (3812) 505-543</a>
                     </div>
                     <div class="hphone__recall_wrapper">
-                        <button class="hphone__recall">Заказать звонок</button>
+                        <button class="hphone__recall" data-toggle="modal" data-target="#exampleModal">Заказать звонок</button>
                     </div>
                 </div>
             </div>
             <?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>    
             
-        </div>          
+        </div> 
+        
+        <!-- MODAL CALL  -->
+        <div class="callback modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="callback__title modal-title" id="exampleModalLabel">Заказать обратный звонок</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <?php echo do_shortcode('[contact-form-7 id="465" title="Обратный звонок"]'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
