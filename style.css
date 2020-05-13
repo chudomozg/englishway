@@ -1711,7 +1711,11 @@ a.teacher-widget__message-link:hover {
   }
 
   .gallery img {
-    height: 258px;
+    height: 320px;
+  }
+
+  .gallery__box {
+    margin-bottom: 20px;
   }
 
   .gallery__md-navigation {
@@ -1879,8 +1883,9 @@ a.teacher-widget__message-link:hover {
     border-bottom: none;
   }
 
-  .ew-online-test-widget__link::before {
-    /* margin-left: 0; */
+  .test-widget_mdbottom,
+  .test-widget_bottom {
+    display: none;
   }
 }
 
