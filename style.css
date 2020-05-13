@@ -1887,6 +1887,23 @@ a.teacher-widget__message-link:hover {
   .test-widget_bottom {
     display: none;
   }
+
+  .ew-online-test-widget_bottom .widget-title {
+    margin-bottom: 40px;
+    margin-top: 35px;
+  }
+
+  .ew-online-test-widget_bottom .ew-online-test-widget__ul {
+    margin-bottom: 0;
+    padding: 0;
+    margin-left: 37px;
+  }
+
+  .ew-online-test-widget_bottom
+    .ew-online-test-widget__ul
+    .ew-online-test-widget__link::before {
+    margin-left: -45px;
+  }
 }
 
 /* // Большие девайсы (большие десктопы, >= 992px) */
@@ -2069,6 +2086,10 @@ a.teacher-widget__message-link:hover {
   .ew-online-test-widget__link::before {
     margin-left: -30px;
   }
+
+  .ew-online-test-widget_bottom .ew-online-test-widget__ul {
+    padding: 0 62px;
+  }
 }
 
 /* // Большие девайсы (большие десктопы, >= 1200px) */
@@ -2234,5 +2255,9 @@ a.teacher-widget__message-link:hover {
 
   .ew-online-test-widget-wrapper .widget-title {
     padding: 0 10px;
+  }
+
+  .ew-online-test-widget_bottom .ew-online-test-widget__ul {
+    padding: 0 136px;
   }
 }
