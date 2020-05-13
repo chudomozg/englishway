@@ -293,10 +293,6 @@ main {
   margin-top: 20px;
 }
 
-.ew-online-test-widget_bottom .ew-online-test-widget__link::before {
-  left: 60px;
-}
-
 .primary-sidebar .ew-online-test-widget {
   margin-top: 20px;
 }
@@ -323,7 +319,7 @@ main {
   height: 24px;
   background: url("./assets/images/list-style-img.svg") no-repeat;
   position: absolute;
-  left: 15px;
+  margin-left: -35px;
 }
 
 /* trial lesson widget  */
@@ -1011,6 +1007,10 @@ a.teacher-widget__message-link:hover {
   padding: 10px 35px;
 }
 
+.ew-online-test-widget-wrapper .widget-title {
+  padding: 0 28px;
+}
+
 /* MEDIA */
 /* /* Экстрамалые девайсы («портретные телефоны», < 576px)* */
 @media (max-width: 575.98px) {
@@ -1225,7 +1225,7 @@ a.teacher-widget__message-link:hover {
   }
 
   .test-widget_mdbottom .test-widget__ico img {
-    width: 120px;
+    width: 90px;
     margin-top: 30px;
   }
 
@@ -1578,7 +1578,8 @@ a.teacher-widget__message-link:hover {
   }
 
   .frontpage-review__more-link {
-    display: none;
+    /* display: none; */
+    text-align: center;
   }
 
   .frontpage-review__title {
@@ -1650,7 +1651,7 @@ a.teacher-widget__message-link:hover {
   }
 
   .ew-online-test-widget__link::before {
-    left: 15px;
+    margin-left: -30px;
   }
 
   .main-banner-sm .banner {
@@ -1877,6 +1878,10 @@ a.teacher-widget__message-link:hover {
   .primary-sidebar .teacher-widget__wrapper {
     border-bottom: none;
   }
+
+  .ew-online-test-widget__link::before {
+    /* margin-left: 0; */
+  }
 }
 
 /* // Большие девайсы (большие десктопы, >= 992px) */
@@ -2055,6 +2060,10 @@ a.teacher-widget__message-link:hover {
   .teacher-widget_bottom .widget {
     padding-top: 96px;
   }
+
+  .ew-online-test-widget__link::before {
+    margin-left: -30px;
+  }
 }
 
 /* // Большие девайсы (большие десктопы, >= 1200px) */
@@ -2212,5 +2221,13 @@ a.teacher-widget__message-link:hover {
 
   .diff__title {
     cursor: default;
+  }
+
+  .ew-online-test-widget__link::before {
+    margin-left: -30px;
+  }
+
+  .ew-online-test-widget-wrapper .widget-title {
+    padding: 0 10px;
   }
 }

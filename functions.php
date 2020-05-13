@@ -536,36 +536,3 @@ function filter_reviews_review_date($value, $post_id, $form_data){
   $value=date('Ymd');
   return $value;
 }
-
-add_filter('wpcf7_form_elements', function($content) {
-    $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
-    return $content;
-    });
-
-    add_action( 'admin_print_styles-toplevel_page_wpcf7', function () {
-
-        if ( empty( $_GET['post'] ) ) {
-            return;
-        }
-    
-        // Подключаем редактор кода для HTML.
-        $settings = wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
-    
-        // Ничего не делаем, если CodeMirror отключен.
-        if ( false === $settings ) {
-            return;
-        }
-    
-        // Инициализация редактора для редактирования шаблона формы
-        wp_add_inline_script(
-            'code-editor',
-            sprintf( 'jQuery( function() { wp.codeEditor.initialize( "wpcf7-form", %s ); } );', wp_json_encode( $settings ) )
-        );
-    
-        // Инициализация редактора для редактирования шаблона письма
-        wp_add_inline_script(
-            'code-editor',
-            sprintf( 'jQuery( function() { wp.codeEditor.initialize( "wpcf7-mail-body", %s ); } );', wp_json_encode( $settings ) )
-        );
-    
-    } );
