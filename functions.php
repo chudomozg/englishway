@@ -536,3 +536,66 @@ function filter_reviews_review_date($value, $post_id, $form_data){
   $value=date('Ymd');
   return $value;
 }
+
+
+//Меняем заголовок для вопросов теста
+add_filter( 'wp_insert_post_data' , 'modify_testq_title' , '99', 1 ); // Grabs the inserted post data so you can modify it.
+
+function modify_testq_title( $data )
+{
+    // echo '<pre>'; 
+    // print_r($_POST);
+    // echo '</pre>';
+  if($data['post_type'] == 'tests' && isset($_POST['acf']['field_5e5cefc65edad'])) { // If the actual field name of the rating date is different, you'll have to update this.
+    $title = wp_trim_words( $_POST['acf']['field_5e5cefc65edad'], 5, '..?' );
+    $data['post_title'] =  $title ; //Updates the post title to your new title.
+  }
+  return $data; // Returns the modified data.
+}
+
+//Меняем slug у вопросов теста при сохранении
+add_filter( 'wp_unique_post_slug', 'custom_unique_testq_slug', 10, 4 );
+function custom_unique_testq_slug( $slug, $post_ID, $post_status, $post_type ) {
+    if ( $post_type ==  'tests') {
+        $slug = $post_ID;
+    }
+    return $slug;
+}
+
+
+//Добавляем фильтр по таксономии (группы сложности и язык теста) в админку (вопросы тестов)
+function filter_testq_by_taxonomies( $post_type, $which ) {
+
+	// Apply this only on a specific post type
+	if ( 'tests' !== $post_type )
+		return;
+
+	// A list of taxonomy slugs to filter by
+	$taxonomies = array( 'test_group', 'test_lang' );
+
+	foreach ( $taxonomies as $taxonomy_slug ) {
+
+		// Retrieve taxonomy data
+		$taxonomy_obj = get_taxonomy( $taxonomy_slug );
+		$taxonomy_name = $taxonomy_obj->labels->name;
+
+		// Retrieve taxonomy terms
+		$terms = get_terms( $taxonomy_slug );
+
+		// Display filter HTML
+		echo "<select name='{$taxonomy_slug}' id='{$taxonomy_slug}' class='postform'>";
+		echo '<option value="">' . sprintf( esc_html__( 'Все %s', 'text_domain' ), $taxonomy_name ) . '</option>';
+		foreach ( $terms as $term ) {
+			printf(
+				'<option value="%1$s" %2$s>%3$s (%4$s)</option>',
+				$term->slug,
+				( ( isset( $_GET[$taxonomy_slug] ) && ( $_GET[$taxonomy_slug] == $term->slug ) ) ? ' selected="selected"' : '' ),
+				$term->name,
+				$term->count
+			);
+		}
+		echo '</select>';
+	}
+
+}
+add_action( 'restrict_manage_posts', 'filter_testq_by_taxonomies' , 10, 2);
