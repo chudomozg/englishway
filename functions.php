@@ -543,9 +543,6 @@ add_filter( 'wp_insert_post_data' , 'modify_testq_title' , '99', 1 ); // Grabs t
 
 function modify_testq_title( $data )
 {
-    // echo '<pre>'; 
-    // print_r($_POST);
-    // echo '</pre>';
   if($data['post_type'] == 'tests' && isset($_POST['acf']['field_5e5cefc65edad'])) { // If the actual field name of the rating date is different, you'll have to update this.
     $title = wp_trim_words( $_POST['acf']['field_5e5cefc65edad'], 5, '..?' );
     $data['post_title'] =  $title ; //Updates the post title to your new title.
@@ -599,3 +596,38 @@ function filter_testq_by_taxonomies( $post_type, $which ) {
 
 }
 add_action( 'restrict_manage_posts', 'filter_testq_by_taxonomies' , 10, 2);
+
+
+// Enable the option show in rest
+add_filter( 'acf/rest_api/field_settings/show_in_rest', '__return_true' );
+
+// Enable the option edit in rest
+add_filter( 'acf/rest_api/field_settings/edit_in_rest', '__return_true' );
+
+
+// создаем новую колонку в админке (вопросы тестов)
+add_filter( 'manage_'.'tests'.'_posts_columns', 'add_views_column', 4 );
+function add_views_column( $columns ){
+	$num = 2; // после какой по счету колонки вставлять новые
+
+	$new_columns = array(
+        'group' => 'Группа сложности',
+        'test_lang' => 'Язык теста'
+	);
+
+	return array_slice( $columns, 0, $num ) + $new_columns + array_slice( $columns, $num );
+}
+
+// заполняем колонку данными
+// wp-admin/includes/class-wp-posts-list-table.php
+add_action('manage_'.'tests'.'_posts_custom_column', 'fill_views_column', 5, 2 );
+function fill_views_column( $colname, $post_id ){
+	if( $colname === 'group' ){
+        $term=get_term(get_field('question_group',$post_id),'test_group',"ARRAY_A");
+        echo ($term['name']);
+    }
+    if( $colname === 'test_lang' ){
+        $term=get_term(get_field('question_lang',$post_id),'test_lang',"ARRAY_A");
+        echo ($term['name']);
+	}
+}
