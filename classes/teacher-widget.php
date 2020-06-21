@@ -47,7 +47,7 @@ class ew_teacher_Widget extends WP_Widget {
 
     foreach ($teachers_random_keys as $key){
         $outer_html.= "<a class='teacher-widget__link col-4' href='".$teachers[$key]['link']."'>
-        <img src='".$teachers[$key]['img']."' class='teacher-widget__img img-fluid'/></a>";
+        <img src='".$teachers[$key]['img']."' class='teacher-widget__img'/></a>";
     };
 
     return $outer_html;

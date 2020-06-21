@@ -7,7 +7,11 @@
             <div class="contetnt-block main-content main-content_gallery row">
               <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 <h2 class="main-title"><?php the_title(); ?></h2>
-                <?php wp_nav_menu( array( 'theme_location' => 'aboutus-menu' ) ); ?> 
+                <?php
+                 wp_nav_menu( array( 
+                  'theme_location' => 'header-menu',
+                  'level' => 2,
+                  'child_of' => 473));?> 
                 <?php echo (ew_get_galleries()) ?>
               <?php endwhile; else : ?>
                 <article>

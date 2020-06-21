@@ -27,7 +27,7 @@
                         Тест из 50 вопросов, направленный на выявление уровня знаний
                       </div>
                       <div class="test-online-page__button button button_red mx-auto w-50 primary-deep">
-                        <a href="">Пройти</a>
+                        <a href="/user_test/english/">Пройти</a>
                       </div>
                     </div>
                   </div>
@@ -43,7 +43,7 @@
                         Тест из 50 вопросов, направленный на выявление уровня знаний
                       </div>
                       <div class="test-online-page__button button button_red mx-auto w-50 primary-deep">
-                        <a href="">Пройти</a>
+                        <a href="/user_test/franch/">Пройти</a>
                       </div>
                     </div>
                   </div>
@@ -67,8 +67,8 @@
                   <p>Извините, записи не были найдены!</p>
                 </article>
               <?php endif; ?>
-          </div>
         </div>
+    </div>
     </div>
     <?php ew_get_bottom_sidebar(get_field('content_length',get_the_ID())); ?>
     </section>

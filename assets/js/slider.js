@@ -1,21 +1,33 @@
-(function ($) {
-  $(document).ready(function () {
+(function($) {
+  $(document).ready(function() {
     //Баннеры
     let bannerSm = $(".main-banner-sm .banner");
-    bannerSm.owlCarousel({loop: true, items: 1, autoWidth: false, nav: false, dotsContainer: ".main-banner-sm .banner-navigation__dots"});
-    $(".main-banner-sm .banner-navigation__prev").click(function () {
+    bannerSm.owlCarousel({
+      loop: true,
+      items: 1,
+      autoWidth: false,
+      nav: false,
+      dotsContainer: ".main-banner-sm .banner-navigation__dots"
+    });
+    $(".main-banner-sm .banner-navigation__prev").click(function() {
       bannerSm.trigger("prev.owl.carousel");
     });
-    $(".main-banner-sm .banner-navigation__next").click(function () {
+    $(".main-banner-sm .banner-navigation__next").click(function() {
       bannerSm.trigger("next.owl.carousel");
     });
 
     let bannerXl = $(".main-banner-xl .banner");
-    bannerXl.owlCarousel({loop: true, items: 1, autoWidth: false, nav: false, dotsContainer: ".main-banner-xl .banner-navigation__dots"});
-    $(".main-banner-xl .banner-navigation__prev").click(function () {
+    bannerXl.owlCarousel({
+      loop: true,
+      items: 1,
+      autoWidth: false,
+      nav: false,
+      dotsContainer: ".main-banner-xl .banner-navigation__dots"
+    });
+    $(".main-banner-xl .banner-navigation__prev").click(function() {
       bannerXl.trigger("prev.owl.carousel");
     });
-    $(".main-banner-xl .banner-navigation__next").click(function () {
+    $(".main-banner-xl .banner-navigation__next").click(function() {
       bannerXl.trigger("next.owl.carousel");
     });
 
@@ -24,25 +36,37 @@
       loop: true,
       responsive: {
         0: {
-          items: 1
+          items: 1,
+          margin: 20
         },
         992: {
-          items: 2
+          items: 2,
+          margin: 0
         },
         1140: {
-          items: 3
+          items: 3,
+          margin: 0
         }
       },
       margin: 0
     });
-    $(".frontpage-review__slider").append("<div class='frontpage-review__more-link slider-more-link'><a href='/review'>Смотреть все отзывы</a></div>");
+    $(".frontpage-review__slider").append(
+      "<div class='frontpage-review__more-link slider-more-link'><a href='/review'>Смотреть все отзывы</a></div>"
+    );
 
-    $(".frontpage-review__nav .frontpage-review__prev").click(function () {
+    $(".frontpage-review__nav .frontpage-review__prev").click(function() {
       $(".frontpage-review__slider").trigger("prev.owl.carousel");
     });
-    $(".frontpage-review__nav .frontpage-review__next").click(function () {
+    $(".frontpage-review__nav .frontpage-review__next").click(function() {
       $(".frontpage-review__slider").trigger("next.owl.carousel");
     });
+
+    // //На странице тестирования (вопросы в тесте)
+    // $(".single-user_test .question-items").owlCarousel({
+    //   loop: true,
+    //   autoHeight: true,
+    //   items: 1
+    // });
 
     //Галерея на главной
     $(".frontpage-gallery__slider").owlCarousel({
@@ -60,23 +84,24 @@
         }
       },
       margin: 16,
-      dotsContainer: ".frontpage-gallery__slider-navigation .slider-navigation__dots"
+      dotsContainer:
+        ".frontpage-gallery__slider-navigation .slider-navigation__dots"
     });
-    $(".frontpage-gallery .slider-navigation__prev").click(function () {
+    $(".frontpage-gallery .slider-navigation__prev").click(function() {
       $(".frontpage-gallery__slider").trigger("prev.owl.carousel");
     });
-    $(".frontpage-gallery .slider-navigation__next").click(function () {
+    $(".frontpage-gallery .slider-navigation__next").click(function() {
       $(".frontpage-gallery__slider").trigger("next.owl.carousel");
     });
-    $(".frontpage-gallery__tablet-prev").click(function () {
+    $(".frontpage-gallery__tablet-prev").click(function() {
       $(".frontpage-gallery__slider").trigger("prev.owl.carousel");
     });
-    $(".frontpage-gallery__tablet-next").click(function () {
+    $(".frontpage-gallery__tablet-next").click(function() {
       $(".frontpage-gallery__slider").trigger("next.owl.carousel");
     });
 
     //Страница Галерея
-    slidersIds.forEach(function (id) {
+    slidersIds.forEach(function(id) {
       galleryName = ".gallery-" + id;
       gallery = $(galleryName + " .gallery__box");
       gallery.owlCarousel({
@@ -84,12 +109,13 @@
         items: 1,
         autoWidth: false,
         nav: false,
-        dotsContainer: galleryName + " .banner-navigation__dots"
+        dotsContainer: galleryName + " .banner-navigation__dots",
+        dotsEach: 3
       });
-      $(galleryName + " .banner-navigation__prev").click(function () {
+      $(galleryName + " .banner-navigation__prev").click(function() {
         $(".gallery-" + id + " .gallery__box").trigger("prev.owl.carousel");
       });
-      $(galleryName + " .banner-navigation__next").click(function () {
+      $(galleryName + " .banner-navigation__next").click(function() {
         $(".gallery-" + id + " .gallery__box").trigger("next.owl.carousel");
       });
 

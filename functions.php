@@ -12,6 +12,8 @@ function ew_add_css(){
     wp_enqueue_style( 'owl-carousel', get_template_directory_uri()."/assets/css/owl.carousel.min.css");
     wp_enqueue_style( 'magnific-popup', get_template_directory_uri()."/assets/css/magnific-popup.css");
     wp_enqueue_style( 'normalize-styles', "https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css");
+    wp_enqueue_style( 'react-test-app-styles',get_template_directory_uri()."/assets/css/react-main.css");
+    wp_enqueue_style( 'react-chunk-test-app-styles',get_template_directory_uri()."/assets/css/react-chunk.css");
     wp_enqueue_style( 'google-open-sans', "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap&subset=cyrillic,cyrillic-ext");
     wp_enqueue_style( 'google-istok-web', "https://fonts.googleapis.com/css?family=Istok+Web:400,700&display=swap&subset=cyrillic,cyrillic-ext");
 }
@@ -30,8 +32,22 @@ function ew_add_js(){
     wp_localize_script('ew-slider', 'slidersIds', ew_get_galleries_id());
     wp_enqueue_script( 'input-mask', get_template_directory_uri()."/assets/js/jquery.inputmask.min.js", array('jquery'));
     wp_enqueue_script( 'input-mask-rules', get_template_directory_uri()."/assets/js/imask_rules.js", array('jquery', 'input-mask'));
+    wp_enqueue_script( 'user-test-react-app', get_template_directory_uri()."/assets/js/react/main.js",'','',true);
+    wp_enqueue_script( 'user-test-test-react-chank', get_template_directory_uri()."/assets/js/react/chunk.js",'','',true);
+    wp_localize_script('user-test-react-app', 'ewPostId', array( "id" => get_the_ID()));
+    wp_localize_script('user-test-react-app', 'templateDir', array( "dir" =>  get_template_directory_uri()));
+   
 }
 add_action( 'wp_enqueue_scripts', 'ew_add_js' );
+
+add_action( 'wp_ajax_ew_send_finish_test_mail',        'ew_send_finish_test_mail' ); // For logged in users
+add_action( 'wp_ajax_nopriv_ew_send_finish_test_mail', 'ew_send_finish_test_mail' ); // For anonymous users
+
+function ew_send_finish_test_mail (){
+    echo json_encode($_POST);
+    wp_die(); 
+}
+
 
 // Регистрирует новую боковую панель под названием 'sidebar'
 function ew_add_widget_support() {
@@ -92,9 +108,6 @@ function ew_register_nav_menu(){
     register_nav_menus( array(
         'header-menu' => 'header-menu',
         'footer-menu'  => 'footer-menu',
-        'aboutus-menu'  => 'aboutus-menu',
-        'review-menu'  => 'review-menu',
-        'lang-menu'  => 'lang-menu',
     ) );
 }
 add_action( 'after_setup_theme', 'ew_register_nav_menu', 0 );
@@ -236,12 +249,19 @@ function ew_get_you_can(){
     return $outer_html;
 }
 
+function ew_get_review_avatar(){
+    // ФУНКЦИЯ ВЫЗЫВАЕТСЯ ТОЛЬКО В ЦИКЛЕ WP
+    $default_img = "<img alt='review avatar' src='".get_template_directory_uri()."/assets/images/default_user.png'>";
+    return (empty(get_the_post_thumbnail())) ? $default_img : get_the_post_thumbnail();
+}
+
 function ew_get_frontpage_review(){
     $outer_html="";
     $args = array(
         'post_type'     => 'reviews',
         'post_status'   => 'publish',
-        'fields'        =>  'ids'
+        'fields'        =>  'ids',
+        'orderby' => 'date'
       );
       // The Query
       $result_query = new WP_Query( $args );
@@ -249,10 +269,11 @@ function ew_get_frontpage_review(){
       while ( $result_query->have_posts() ) {
         $result_query->the_post();
         $id=get_the_ID();
-        $img=get_the_post_thumbnail();
+        $default_img = "<img alt='review avatar' src='".get_template_directory_uri()."/assets/images/default_user.png'>";
+        $img=ew_get_review_avatar();
         $link=get_permalink($id);
         $text=get_field('review_body',$id);
-        $date=get_field('review_date',$id);
+        $date=get_the_date('j F Y');
         $name=get_field('review_name',$id);
 
         $outer_html.="
@@ -264,9 +285,9 @@ function ew_get_frontpage_review(){
                     $name
                     <div class='review__date d-lg-none d-block'>$date</div>
                 </div>
-                <div class='review__quotation-mark review__quotation-mark_up d-md-block d-none col-12'></div>
+                <div class='review__quotation-mark review__quotation-mark_up d-md-block d-lg-none col-12'></div>
                 <div class='review__text col-12'>".wp_trim_words( $text, 20, "...")."</div>
-                <div class='review__quotation-mark review__quotation-mark_down d-md-block d-none d-lg-none col-12'></div>
+                <div class='review__quotation-mark review__quotation-mark_down d-md-block d-lg-none col-12'></div>
                 <div class='review__link-more d-flex col-12'>
                     <div class='review__link-ico  d-block d-md-none d-lg-block'></div>
                     <a href='$link'>Читать целиком</a>
@@ -346,7 +367,8 @@ function ew_get_reviews(){
     $args = array(
         'post_type'     => 'reviews',
         'post_status'   => 'publish',
-        'fields'        =>  'ids'
+        'fields'        =>  'ids',
+        'orderby' => 'date'
       );
       // The Query
       $result_query = new WP_Query( $args );
@@ -354,10 +376,10 @@ function ew_get_reviews(){
       while ( $result_query->have_posts() ) {
         $result_query->the_post();
         $id=get_the_ID();
-        $img=get_the_post_thumbnail();
+        $img=ew_get_review_avatar();
         $link=get_permalink($id);
         $text=get_field('review_body',$id);
-        $date=get_field('review_date',$id);
+        $date=get_the_date('j F Y');
         $name=get_field('review_name',$id);
 
         $outer_html.="
@@ -409,9 +431,16 @@ function ew_get_programms(){
 
 function ew_get_recvizit(){
     $id=get_the_ID();
-    $recvizit=get_field('contact_recvizit',$id);
-  
-    return $recvizit;
+    $recvizit_field_value=get_field('contact_recvizit',$id);
+    return $recvizit_field_value ? 
+    '<div class="contetnt-block recvizit row">
+        <div class="recvizit__title contetnt-block__title col-12">
+            <h3>РЕКВИЗИТЫ</h3>
+            <div class="contetnt-block__title-delimiter"></div>
+        </div>
+        '.$recvizit_field_value.'
+    </div>' 
+    : false;
 }
 
 function ew_get_teachers(){
@@ -523,9 +552,8 @@ function filter_reviews_title($value, $post_id, $form_data){
   //$value is the post field value to return, by default it is empty. If you are filtering a taxonomy you can return either slug/id/array.  in case of ids make sure to cast them integers.(see https://codex.wordpress.org/Function_Reference/wp_set_object_terms for more information.)
   //$post_id is the ID of the post to which the form values are being mapped to
   // $form_data is the submitted form data as an array of field-name=>value pairs
-
-//   return $value;
-  return $post_id;
+    $value = wp_trim_words($form_data['fio'], 3, '' );
+  return $value;
 }
 
 add_filter('cf7_2_post_filter-reviews-review_date','filter_reviews_review_date',10,3);
@@ -536,6 +564,20 @@ function filter_reviews_review_date($value, $post_id, $form_data){
   $value=date('Ymd');
   return $value;
 }
+
+
+//Меняем заголовок для Отзывов
+add_filter( 'wp_insert_post_data' , 'modify_review_title' , '99', 1 ); // Grabs the inserted post data so you can modify it.
+
+function modify_review_title( $data )
+{
+  if($data['post_type'] == 'reviews' && isset($_POST['acf']['field_5e57d4fe36a16'])) { // If the actual field name of the rating date is different, you'll have to update this.
+    $title = wp_trim_words( $_POST['acf']['field_5e57d4fe36a16'], 3, '' );
+    $data['post_title'] =  $title ; //Updates the post title to your new title.
+  }
+  return $data; // Returns the modified data.
+}
+
 
 
 //Меняем заголовок для вопросов теста

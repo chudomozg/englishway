@@ -7,7 +7,11 @@
             <div class="contetnt-block main-content contetnt-block_md-bottom-delimiter row">
               <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 <h2 class="main-title"><?php the_title(); ?></h2>
-                <?php wp_nav_menu( array( 'theme_location' => 'review-menu' ) ); ?> 
+                <?php
+                 wp_nav_menu( array( 
+                  'theme_location' => 'header-menu',
+                  'level' => 2,
+                  'child_of' => 217)); ?> 
                   <?php echo ew_get_reviews() ?>
               <?php endwhile; else : ?>
                 <article>

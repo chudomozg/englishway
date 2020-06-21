@@ -6,7 +6,12 @@
         <div class="content col-12 col-md-8 col-xl-9 pb-xl-3">
             <div class="contetnt-block main-content contetnt-block_md-bottom-delimiter row">
 			          <h2 class="main-title">Программы и цены</h2>
-                <?php wp_nav_menu( array( 'theme_location' => 'lang-menu' ) ); ?> 
+                <?php
+                   wp_nav_menu( array( 
+                     'theme_location' => 'header-menu',
+                     'level' => 2,
+                     'child_of' => 433));
+                ?> 
                 <div class="programs__title contetnt-block__title col-12">
                     <h3>Мы предлагаем</h3>
                     <div class="contetnt-block__title-delimiter"></div>

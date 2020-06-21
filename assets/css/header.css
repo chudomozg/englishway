@@ -131,12 +131,16 @@
   top: -2px;
 }
 
-#menu-header li.current-menu-item {
+#menu-header li.current-menu-item,
+#menu-header li.current-menu-parent {
   border-top: 2px solid #2b2873;
 }
 #menu-header li.current-menu-item a,
 #menu-header li.current-menu-item a:visited,
-#menu-header li.current-menu-item a:hover {
+#menu-header li.current-menu-item a:hover,
+#menu-header li.current-menu-parent a,
+#menu-header li.current-menu-parent a:visited,
+#menu-header li.current-menu-parent a:hover {
   color: #2b2873;
 }
 
@@ -289,7 +293,7 @@
     padding: 0;
   }
 
-  .menu-header-container {
+  header .menu-header-container {
     padding-bottom: 4px;
     position: absolute;
     z-index: 50;

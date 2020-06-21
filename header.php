@@ -53,7 +53,8 @@
                     </div>
                 </div>
             </div>
-            <?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>    
+            <?php wp_nav_menu( array( 'theme_location' => 'header-menu',
+                     'level' => 1 ) ); ?>    
             
         </div> 
         

@@ -7,7 +7,11 @@
             <div class="contetnt-block main-content row">
               <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 <h2 class="main-title"><?php the_title(); ?></h2>
-                <?php wp_nav_menu( array( 'theme_location' => 'aboutus-menu' ) ); ?> 
+                <?php
+                wp_nav_menu( array( 
+                     'theme_location' => 'header-menu',
+                     'level' => 2,
+                     'child_of' => 473));?> 
                 <?php the_content(); ?>
               <?php endwhile; else : ?>
                 <article>
