@@ -49,7 +49,7 @@
                         <a class="hphone__link" href="tel:+7 (3812) 505-543">+7 (3812) 505-543</a>
                     </div>
                     <div class="hphone__recall_wrapper">
-                        <button class="hphone__recall" data-toggle="modal" data-target="#exampleModal">Заказать звонок</button>
+                        <button class="hphone__recall button" data-toggle="modal" data-target="#exampleModal">Заказать звонок</button>
                     </div>
                 </div>
             </div>

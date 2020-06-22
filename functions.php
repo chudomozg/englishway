@@ -546,7 +546,6 @@ function ew_get_galleries(){
     return $outer_html;
 }
 
-
 add_filter('cf7_2_post_filter-reviews-title','filter_reviews_title',10,3);
 function filter_reviews_title($value, $post_id, $form_data){
   //$value is the post field value to return, by default it is empty. If you are filtering a taxonomy you can return either slug/id/array.  in case of ids make sure to cast them integers.(see https://codex.wordpress.org/Function_Reference/wp_set_object_terms for more information.)

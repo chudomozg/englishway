@@ -396,6 +396,10 @@ main {
   max-height: 150px;
 }
 
+.primary-sidebar .teacher-widget__img {
+  max-height: 96px;
+}
+
 .teacher-widget__message {
   margin-top: 15px;
 }
@@ -1210,6 +1214,18 @@ a.teacher-widget__message-link:hover {
 
 .test-spinner {
   text-align: center;
+}
+
+.test-offline__text {
+  margin: 0 10px 10px;
+}
+
+.test-offline__name-wrapper {
+  margin-bottom: 10px;
+}
+
+.test-offline__phone-wrapper {
+  margin-bottom: 20px;
 }
 
 /* MEDIA */

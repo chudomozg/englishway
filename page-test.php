@@ -58,7 +58,7 @@
                   </div>
                   <div class="col-6 col-lg-5 col-xl-4 mx-auto">
                     <div class="test-online-page__button button button_red mx-auto w-100 primary-deep">
-                      <a href="">Записаться</a>
+                      <a data-toggle="modal" href="#offline-test">Записаться</a>
                     </div>
                   </div>
                 </div>
@@ -70,6 +70,22 @@
         </div>
     </div>
     </div>
+    <!-- MODAL TEST OFFLINE  -->
+    <div class="callback modal fade" id="offline-test" tabindex="-1" role="dialog" aria-labelledby="offline-test-label" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="callback__title modal-title" id="offline-test-label">Тестирование в офисе Englishway!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <?php echo do_shortcode('[contact-form-7 id="973" title="Тестирование оффлайн"]'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     <?php ew_get_bottom_sidebar(get_field('content_length',get_the_ID())); ?>
     </section>
     
